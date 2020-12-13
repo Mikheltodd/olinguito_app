@@ -1,39 +1,45 @@
 <template>
-    <div id="Hotel">
-        <h2>Hola <span> {{hotel_name}}, </span> ¡Bienvenido!</h2>
+  <div class="welcome">
+    <div class="item">
+      <h1 style="font-weight: bold">¡Hola, {{ hotel_name }}!</h1>
     </div>
+    <div class="item">
+      <h2>Bienvenido</h2>
+    </div>
+  </div>
 </template>
 
 <script>
-    export default {
-        name: "Hotel",
-        data:function(){
-            return {
-                hotel_name: "none"
-            }
-        },
-        created: function(){
-            this.hotel_name = this.$route.params.hotel_name
-        }
-    }
+export default {
+  name: "Hotel",
+  data: function () {
+    return {
+      hotel_name: "none",
+    };
+  },
+  created: function () {
+    this.hotel_name = this.$route.params.hotel_name;
+  },
+};
 </script>
 
 <style>
-    #User{
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    #User h2{
-        font-size: 50px;
-        color: #283747;
-    }
-
-    #User span{
-        color: crimson;
-        font-weight: bold;
-    }
+.welcome {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  background: url("https://images.pexels.com/photos/1134176/pexels-photo-1134176.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
+    bottom center no-repeat;
+  background-size: auto;
+  width: 100%;
+  height: 60vh;
+}
+.item {
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 1em;
+  margin: 0.5em;
+}
 </style>

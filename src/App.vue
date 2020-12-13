@@ -48,7 +48,6 @@ export default {
         });
       }
     },
-
   },
 
   beforeCreate: function () {
@@ -63,8 +62,9 @@ export default {
 </script>
 
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@500;700;800&display=swap");
 * {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Raleway", sans-serif;
   font-size: 3vh;
   margin: 0;
 }
@@ -75,7 +75,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 2vh 4vh;
-  height: 12vh;
+  min-height: 12vh;
   color: white;
   background: url("https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
     center center no-repeat;
@@ -122,9 +122,14 @@ button:hover {
 
 main {
   display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.5em;
   overflow: auto;
-  height: 65vh;
+  min-height: 65vh;
   color: black;
+  background-color: black;
 }
 
 article {
@@ -138,7 +143,7 @@ footer {
   flex-direction: row;
   align-items: center;
   padding: 2vh;
-  height: 12vh;
+  min-height: 12vh;
   color: white;
   background: url("https://images.pexels.com/photos/3209049/pexels-photo-3209049.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
     center center no-repeat;
