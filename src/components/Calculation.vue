@@ -51,16 +51,28 @@ export default {
     name: "Calculation",
     methods:{
         make_calculation: function(){
-            var data={
+            var dataIn={
                 hotel_name: this.hotel_name,
                 expected_profit: this.expected_profit,
                 incidental_value: this.incidental_value
             }
 
-            axios.put("http://127.0.0.1:8000/hotel/calculation/", data)
-            .then(response =>{
-                alert("El cálculo se realizó con éxito");
-                this.$router.push({ name:"calculation", params:{data}});
+            var dataOut={
+                id_calculation: 0,
+                hotel_name: "",
+                date: 0,
+                h_price: 0,
+                m_price: 0,
+                l_price: 0
+            }
+
+            axios.put("http://127.0.0.1:8000/hotel/calculation/", dataIn)
+           // .then(response =>{
+             //   alert("El cálculo se realizó con éxito");
+               // this.$router.push({ name:"calculation", params:{data}});
+            //})
+            .then((result)=>{
+                console.log(result);
             })
             .catch((error)=>{
                 alert("Error en el servidor");
