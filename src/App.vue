@@ -141,7 +141,7 @@ main button {
   display: flex;
   overflow: auto;
   color: black;
-  background-color: aqua;
+
 }
 
 article {

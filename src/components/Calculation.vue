@@ -1,10 +1,47 @@
 <template>
   <div id = "Calculation">
         <br>
-        Nombre hotel: <input type="text" placeholder="Nombre hotel" v-model="hotel_name"/><br/>
-        Utilidad esperada: <input type="number" placeholder="Utilidad esperada" v-model="expected_profit"/><br/>
-        Imprevistos: <input type="number" placeholder="Imprevistos" v-model="incidental_value"/><br/>
-        <button v-on:click="make_calculation" >Hacer Cálculo</button>
+            <div class="form-group">
+                Nombre hotel:
+                <select name="hotel" class="form-control form-control-sm" v-model="hotel_name">
+                    <option selected value="">Seleccione un hotel</option>
+                    <option value="Hotel1">Hotel 1</option>
+                    <option value="Hotel2">Hotel 2</option>
+                    <option value="olinguito">Olinguito</option>
+                </select>  
+            </div>
+            <div class="form-group">
+                Utilidad Esperada: <input type="number" placeholder="Utilidad esperada" class="form-control form-control-sm" v-model="expected_profit"/>
+            </div>
+            <div class="form-group">
+                Imprevistos: <input type="number" placeholder="Imprevistos" class="form-control form-control-sm" v-model="incidental_value"/>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-success" v-on:click="make_calculation">Calcular</button>
+            </div>
+        <br>
+        <table class="table table-bordered table-striped">
+        <thead>
+            <tr class="text-center bg-info text-light">
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Fecha Cálculo</th>
+                <th>Precio Temporada Alta</th>
+                <th>Precio Temporada Media</th>
+                <th>Precio Temporada Baja</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="text-center">
+                <td>{{id_calculation}}xxx</td>
+                <td>{{hotel_name}}xxx</td>
+                <td>{{date}}xxxx</td>
+                <td>{{h_price}}xxx</td>
+                <td>{{m_price}}xxx</td>
+                <td>{{l_price}}xxxx</td>
+            </tr>
+        </tbody>
+    </table>
     </div>
 </template>
 
