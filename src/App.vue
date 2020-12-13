@@ -31,7 +31,7 @@ export default {
   },
   methods: {
     init: function () {
-      if (this.$route.name != "hotel") {
+      if (this.$route.name != "hotel_name") {
         let hotel_name = localStorage.getItem("current_hotel_name");
         this.$router.push({
           name: "hotel_name",
@@ -102,6 +102,7 @@ button {
   border-radius: 0.5em;
   background-color: rgba(255, 255, 255, 0.6);
   margin: 0.5em;
+  align-items: center;
 }
 
 button:hover {
@@ -113,6 +114,7 @@ main {
   display: flex;
   overflow: auto;
   height: 65vh;
+  color: black;
 }
 
 article {

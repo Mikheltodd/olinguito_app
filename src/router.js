@@ -12,8 +12,8 @@ const router = new vueRouter({
       component: App
     },
     {
-      path: "/hotel/:hotel-name",
-      name: "hotel-name",
+      path: "/hotel/:hotel_name",
+      name: "hotel_name",
       component: Hotel
     },
     {
