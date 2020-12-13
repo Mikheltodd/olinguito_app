@@ -132,7 +132,7 @@ main {
   justify-content: center;
   line-height: 1.5em;
   overflow: auto;
-  min-height: 65vh;
+  min-height: 70vh;
   color: black;
   background-color: white;
 }
@@ -141,7 +141,7 @@ main button {
   display: flex;
   overflow: auto;
   color: black;
-
+  background-color: aqua;
 }
 
 article {

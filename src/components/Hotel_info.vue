@@ -1,19 +1,49 @@
 <template>
-  <div id="Hotel_info">
-    <h2>{{ hotel_name }}</h2>
-
-    <h2>
-      Número de habitaciones: <span> {{ n_rooms }} </span>
-    </h2>
-    <h2>
-      Costo de operación: <span> {{ total_operation_cost }} </span>
-    </h2>
-    <h2>
-      Días de temporada baja: <span> {{ l_days }} </span>
-    </h2>
-    <h2>
-      Días de temporada alta: <span> {{ h_days }} </span>
-    </h2>
+  <div class="show-data">
+    <div class="data-element">
+      <b-table-simple
+        hover
+        small
+        caption-top
+        responsive
+        table-bordered
+        table-striped
+      >
+        <caption></caption>
+        <b-thead head-variant="dark" style="text-align: center">
+          <b-tr>
+            <b-th colspan="2">Datos del Hotel: {{ hotel_name }} </b-th>
+          </b-tr>
+          <b-tr style="text-align: center">
+            <b-th>Parámetro</b-th>
+            <b-th>Valor</b-th>
+          </b-tr>
+        </b-thead>
+        <b-tbody>
+          <b-tr>
+            <b-th class="text-left">Número de habitaciones:</b-th>
+            <b-td class="text-center">{{ n_rooms }}</b-td>
+          </b-tr>
+          <b-tr>
+            <b-th class="text-left">Costo de operación:</b-th>
+            <b-td class="text-center">{{ total_operation_cost }}</b-td>
+          </b-tr>
+          <b-tr>
+            <b-th class="text-left">Días de temporada baja:</b-th>
+            <b-td class="text-center">{{ l_days }}</b-td>
+          </b-tr>
+          <b-tr>
+            <b-th class="text-left">Días de temporada alta:</b-th>
+            <b-td class="text-center">{{ h_days }}</b-td>
+          </b-tr>
+        </b-tbody>
+        <b-tfoot>
+          <b-tr>
+            <b-td colspan="2" variant="dark" class="text-right"> </b-td>
+          </b-tr>
+        </b-tfoot>
+      </b-table-simple>
+    </div>
   </div>
 </template>
 
@@ -51,12 +81,20 @@ export default {
 </script>
 
 <style>
-#UserBalance {
-  width: 100%;
-  height: 100%;
-
+.show-data {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: space-between;
+  background: url("https://images.pexels.com/photos/590041/pexels-photo-590041.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
+    center center no-repeat;
+  background-size: auto;
+  width: 100%;
+  height: 60vh;
 }
+.data-element {
+  display: flex;
+  padding: 0 2em;
+  margin-left: 3em;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+</style>
