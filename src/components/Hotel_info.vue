@@ -1,5 +1,5 @@
 <template>
-  <div id="Calculation">
+  <div id="Hotel_info">
     <h2>{{ hotel_name }}</h2>
 
     <h2>
@@ -20,7 +20,7 @@
 <script>
 import axios from "axios";
 export default {
-  name: "Calculation",
+  name: "Hotel_info",
   data: function () {
     return {
       hotel_name: "",
@@ -60,14 +60,3 @@ export default {
   justify-content: center;
   align-items: center;
 }
-
-#UserBalance h2 {
-  font-size: 50px;
-  color: #283747;
-}
-
-#UserBalance span {
-  color: crimson;
-  font-weight: bold;
-}
-</style>

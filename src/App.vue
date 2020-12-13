@@ -5,7 +5,7 @@
       <nav>
         <button v-on:click="init" v-if="is_auth">Inicio</button>
         <button v-on:click="getBalance" v-if="is_auth">Hotel</button>
-        <button v-if="is_auth">Cálculo</button>
+        <button v-on:click="getCalculation" v-if="is_auth">Cálculo</button>
         <button v-if="is_auth">Cerrar Sesión</button>
       </nav>
     </header>
@@ -40,12 +40,17 @@ export default {
       }
     },
     getBalance: function () {
-      if (this.$route.name != "calculation") {
+      if (this.$route.name != "hotel_info") {
         let hotel_name = localStorage.getItem("current_hotel_name");
         this.$router.push({
-          name: "calculation",
+          name: "hotel_info",
           params: { hotel_name: hotel_name },
         });
+      }
+    },
+    getCalculation: function () {
+      if (this.$route.name != "calculation") {
+        this.$router.push({ name: "calculation" });
       }
     },
   },
@@ -130,6 +135,13 @@ main {
   min-height: 65vh;
   color: black;
   background-color: black;
+}
+
+main button {
+  display: flex;
+  overflow: auto;
+  color: black;
+  background-color: aqua;
 }
 
 article {
