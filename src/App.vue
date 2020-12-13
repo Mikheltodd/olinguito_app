@@ -134,7 +134,7 @@ main {
   overflow: auto;
   min-height: 65vh;
   color: black;
-  background-color: black;
+  background-color: white;
 }
 
 main button {
