@@ -39,6 +39,16 @@ export default {
         });
       }
     },
+    getBalance: function () {
+      if (this.$route.name != "calculation") {
+        let hotel_name = localStorage.getItem("current_hotel_name");
+        this.$router.push({
+          name: "calculation",
+          params: { hotel_name: hotel_name },
+        });
+      }
+    },
+
   },
 
   beforeCreate: function () {
