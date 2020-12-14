@@ -7,7 +7,7 @@
           <button v-on:click="init" v-if="is_auth">Inicio</button>
           <button v-on:click="getBalance" v-if="is_auth">Hotel</button>
           <button v-on:click="getCalculation" v-if="is_auth">Cálculo</button>
-          <button v-if="is_auth">Cerrar Sesión</button>
+          <button v-on:click="getList">Lista de hoteles</button>
         </nav>
       </header>
 
@@ -53,6 +53,11 @@ export default {
     getCalculation: function () {
       if (this.$route.name != "calculation") {
         this.$router.push({ name: "calculation" });
+      }
+    },
+     getList: function () {
+      if (this.$route.name != "Lista_hoteles") {
+        this.$router.push({ name: "Lista_hoteles" });
       }
     },
   },

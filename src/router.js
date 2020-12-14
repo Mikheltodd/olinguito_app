@@ -2,6 +2,7 @@ import vueRouter from "vue-router";
 import Hotel from "./components/Hotel";
 import Hotel_info from "./components/Hotel_info";
 import Calculation from "./components/Calculation";
+import Lista_hoteles from "./components/Lista_hoteles";
 import App from "./App";
 const router = new vueRouter({
   mode: "history",
@@ -26,6 +27,11 @@ const router = new vueRouter({
       path: "/hotel/calculation",
       name: "calculation",
       component: Calculation
+    },
+    {
+      path: "/hotel/Lista_hoteles",
+      name:"Lista_hoteles",
+      component: Lista_hoteles
     }
 
   ]
