@@ -51,12 +51,12 @@
       </thead>
       <tbody>
         <tr class="text-center">
-          <td>{{ id_calculation }}xxx</td>
-          <td>{{ hotel_name }}xxx</td>
-          <td>{{ date }}xxxx</td>
-          <td>{{ h_price }}xxx</td>
-          <td>{{ m_price }}xxx</td>
-          <td>{{ l_price }}xxxx</td>
+          <td>{{ id_calculation }}</td>
+          <td>{{ hotel_name }}</td>
+          <td>{{ date }}</td>
+          <td>{{ h_price }}</td>
+          <td>{{ m_price }}</td>
+          <td>{{ l_price }}</td>
         </tr>
       </tbody>
     </table>
@@ -67,6 +67,17 @@
 import axios from "axios";
 export default {
   name: "Calculation",
+  data: function (){
+      return{       
+        id_calculation: 0,
+        hotel_name: "",
+        date: 0,
+        h_price: 0,
+        m_price: 0,
+        l_price: 0,
+      }  
+       
+    },
   methods: {
     make_calculation: function () {
       var dataIn = {
@@ -75,24 +86,24 @@ export default {
         incidental_value: this.incidental_value,
       };
 
-      var dataOut = {
-        id_calculation: 0,
-        hotel_name: "",
-        date: 0,
-        h_price: 0,
-        m_price: 0,
-        l_price: 0,
-      };
-
-      axios
+        axios
         .put("http://127.0.0.1:8000/hotel/calculation/", dataIn)
         // .then(response =>{
         //   alert("El cálculo se realizó con éxito");
         // this.$router.push({ name:"calculation", params:{data}});
         //})
-        .then((result) => {
-          console.log(result);
-        })
+        // .then((result) => {
+        //   console.log(result);
+        // })
+        .then(response =>(
+            this.id_calculation= response.data.id_calculation,
+            this.hotel_name=response.data.hotel_name,
+            this.date = response.data.date,
+            this.h_price = response.data.h_price,
+            this.m_price = response.data.m_price,
+            this.l_price = response.data.l_price
+
+        ))
         .catch((error) => {
           alert("Error en el servidor");
         });
