@@ -1,13 +1,8 @@
 <template>
-  <div id="Calculation">
-    <br />
+  <form id="Calculation">
     <div class="form-group">
-      Nombre hotel:
-      <select
-        name="hotel"
-        class="form-control form-control-sm"
-        v-model="hotel_name"
-      >
+      <label for="exampleFormControlSelect1">Nombre hotel:</label>
+      <select name="hotel" class="form-control form-control-sm" id="exampleFormControlSelect1" v-model="hotel_name">
         <option selected value="">Seleccione un hotel</option>
         <option value="Hotel1">Hotel 1</option>
         <option value="Hotel2">Hotel 2</option>
@@ -15,29 +10,18 @@
       </select>
     </div>
     <div class="form-group">
-      Utilidad Esperada:
-      <input
-        type="number"
-        placeholder="Utilidad esperada"
-        class="form-control form-control-sm"
-        v-model="expected_profit"
-      />
+      <label for="exampleInput1">Utilidad Esperada:</label>
+      <input type="number" class="form-control form-control-sm" id="exampleInput1" placeholder="Utilidad esperada" v-model="expected_profit">
     </div>
     <div class="form-group">
-      Imprevistos:
-      <input
-        type="number"
-        placeholder="Imprevistos"
-        class="form-control form-control-sm"
-        v-model="incidental_value"
-      />
+      <label for="exampleInput2">Imprevistos:</label>
+      <input type="number" class="form-control form-control-sm" id="exampleInput2" placeholder="Imprevistos" v-model="incidental_value">
     </div>
     <div class="form-group">
       <button class="btn btn-success" v-on:click="make_calculation">
         Calcular
       </button>
     </div>
-    <br />
     <table class="table table-bordered table-striped">
       <thead>
         <tr class="text-center bg-info text-light">
@@ -51,16 +35,16 @@
       </thead>
       <tbody>
         <tr class="text-center">
-          <td>{{ id_calculation }}</td>
-          <td>{{ hotel_name }}</td>
-          <td>{{ date }}</td>
-          <td>{{ h_price }}</td>
-          <td>{{ m_price }}</td>
-          <td>{{ l_price }}</td>
+          <td>{{ id_calculation }}xxx</td>
+          <td>{{ hotel_name }}xxx</td>
+          <td>{{ date }}xxxx</td>
+          <td>{{ h_price }}xxx</td>
+          <td>{{ m_price }}xxx</td>
+          <td>{{ l_price }}xxxx</td>
         </tr>
       </tbody>
-    </table>
-  </div>
+    </table>    
+  </form>
 </template>
 
 <script>
@@ -112,8 +96,16 @@ export default {
 };
 </script>
 <style>
-.calculation-theme {
-  background: url("https://images.pexels.com/photos/4219527/pexels-photo-4219527.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
+#Calculation{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  background: url("https://images.pexels.com/photos/4039781/pexels-photo-4039781.jpeg?cs=srgb&dl=pexels-karolina-grabowska-4039781.jpg&fm=jpg")
     bottom center no-repeat;
+  background-size:cover;
+  width: 100%;
+  height: 80vh;
 }
 </style>
