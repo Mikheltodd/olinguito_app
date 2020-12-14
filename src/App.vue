@@ -1,22 +1,24 @@
 <template>
   <div id="app">
-    <header>
-      <img src="../img/olinguito-white.png" alt="logo" type="text/css" />
-      <nav>
-        <button v-on:click="init" v-if="is_auth">Inicio</button>
-        <button v-on:click="getBalance" v-if="is_auth">Hotel</button>
-        <button v-on:click="getCalculation" v-if="is_auth">Cálculo</button>
-        <button v-if="is_auth">Cerrar Sesión</button>
-      </nav>
-    </header>
+    <div class="wrapper">
+      <header>
+        <img src="../img/olinguito-white.png" alt="logo" type="text/css" />
+        <nav>
+          <button v-on:click="init" v-if="is_auth">Inicio</button>
+          <button v-on:click="getBalance" v-if="is_auth">Hotel</button>
+          <button v-on:click="getCalculation" v-if="is_auth">Cálculo</button>
+          <button v-if="is_auth">Cerrar Sesión</button>
+        </nav>
+      </header>
 
-    <main>
-      <router-view></router-view>
-    </main>
+      <main>
+        <router-view></router-view>
+      </main>
 
-    <footer>
-      <p>&copy; Misión TIC 2022</p>
-    </footer>
+      <footer>
+        <p>&copy; Misión TIC 2022</p>
+      </footer>
+    </div>
   </div>
 </template>
 
@@ -72,20 +74,33 @@ export default {
   font-family: "Raleway", sans-serif;
   font-size: 3vh;
   margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-areas:
+    "header "
+    "main"
+    "footer";
+  min-height: 100vh;
 }
 
 header {
+  grid-area: header;
+  position: sticky;
+  top: 0;
+  z-index: 1;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 2vh 4vh;
-  min-height: 12vh;
+  padding: 0.5em 2em;
+  max-height: 15vh;
   color: white;
   background: url("https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
     center center no-repeat;
   background-size: cover;
-  min-height: 80px;
 }
 
 header h1 {
@@ -126,15 +141,16 @@ button:hover {
 }
 
 main {
+  grid-area: main;
   display: flex;
+  flex-direction: column;
   align-content: center;
   align-items: center;
   justify-content: center;
-  line-height: 1.5em;
-  overflow: auto;
   min-height: 70vh;
+  line-height: 1.5em;
   color: black;
-  background-color: white;
+  background-color: rgba(255, 254, 209, 0.5);
 }
 
 main button {
@@ -151,17 +167,19 @@ article {
 }
 
 footer {
+  grid-area: footer;
+  position: sticky;
+  bottom: 0;
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 2vh;
-  min-height: 12vh;
+  padding: 1em;
   color: white;
   background: url("https://images.pexels.com/photos/3209049/pexels-photo-3209049.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
     center center no-repeat;
   background-size: cover;
   justify-content: center;
-  min-height: 80px;
+  max-height: 15vh;
 }
 
 footer p {

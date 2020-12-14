@@ -1,7 +1,7 @@
 <template>
   <div class="welcome">
     <div class="item">
-      <h1 style="font-weight: bold">¡Hola, {{ hotel_name }}!</h1>
+      <h1>¡Hola, {{ hotel_name }}!</h1>
     </div>
     <div class="item">
       <h2>Bienvenido</h2>
@@ -41,5 +41,7 @@ export default {
   background-color: rgba(255, 255, 255, 0.6);
   padding: 1em;
   margin: 0.5em;
+  font-weight: bold;
+  border-radius: 0.5em;
 }
 </style>
