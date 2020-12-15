@@ -1,49 +1,65 @@
 <template>
-    <div id="Lista_hoteles">
-        <table class="table table-bordered table-striped" style="">
-          <tr class="text-center bg-info text-light">
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Numero de habitaciones</th>
-            <th>Costo de operación diario</th>
-            <th>Cantidad dias temp baja</th>
-            <th>Cantidad dias temp alta</th>
-            <th>Cantidad dias temp media</th>
-          </tr>
-          <tr v-for="(item,index) in hotels">
-            <td>{{index+1}}</td>
-            <td>{{item.name}}</td>
-            <td>{{item.n_rooms}}</td>
-            <td>{{item.total_operation_cost | currency}}</td>
-            <td>{{item.l_days}}</td>
-            <td>{{item.h_days}}</td>
-            <td>{{365-item.l_days-item.h_days}}</td>
-
-          </tr>
-      </table>
-    </div>
+  <div id="Lista_hoteles">
+    <b-table-simple
+      class="table table-bordered table-striped text-center"
+      hover
+      small
+      caption-top
+      responsive
+      table-bordered
+      table-striped
+    >
+      <b-thead head-variant="dark" style="text-align: center">
+        <b-tr class="text-center bg-info text-light">
+          <b-th rowspan="2" class="align-middle">ID</b-th>
+          <b-th rowspan="2" class="align-middle">Nombre</b-th>
+          <b-th rowspan="2" class="align-middle">No. habitaciones</b-th>
+          <b-th rowspan="2" class="align-middle"
+            >Costo de operación <br />
+            diario</b-th
+          >
+          <b-th colspan="3">Días por Temporada</b-th>
+        </b-tr>
+        <b-tr class="text-center bg-info text-light">
+          <b-th>Baja</b-th>
+          <b-th>Alta</b-th>
+          <b-th>Media</b-th>
+        </b-tr>
+      </b-thead>
+      <b-tbody>
+        <b-tr v-for="(item, index) in hotels" v-bind:key="item.name">
+          <b-td>{{ index + 1 }}</b-td>
+          <b-td>{{ item.name }}</b-td>
+          <b-td>{{ item.n_rooms }}</b-td>
+          <b-td>{{ item.total_operation_cost | currency }}</b-td>
+          <b-td>{{ item.l_days }}</b-td>
+          <b-td>{{ item.h_days }}</b-td>
+          <b-td>{{ 365 - item.l_days - item.h_days }}</b-td>
+        </b-tr>
+      </b-tbody>
+    </b-table-simple>
+  </div>
 </template>
 <script>
 import axios from "axios";
 export default {
- name: "Lista_hoteles",
- data: function () {
+  name: "Lista_hoteles",
+  data: function () {
     return {
-      hotels:[]
+      hotels: [],
     };
   },
-created: function(){
-    let self=this;
-    axios.get("http://127.0.0.1:8000/hotel/list" )
-    .then(response =>{
-        self.hotels=response.data
-        console.log(self.hotels)
-    })
-    .catch(error=>{
-        alert("Error de servidor")
-    })
-
-}
-
+  created: function () {
+    let self = this;
+    axios
+      .get("http://127.0.0.1:8000/hotel/list")
+      .then((response) => {
+        self.hotels = response.data;
+        console.log(self.hotels);
+      })
+      .catch((error) => {
+        alert("Error de servidor");
+      });
+  },
 };
 </script>

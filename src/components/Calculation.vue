@@ -39,36 +39,50 @@
         />
       </div>
       <div class="form-group">
-        <button class="btn btn-success" v-on:click="make_calculation">
+        <button
+          v-scroll-to="'#table_results'"
+          class="btn btn-success"
+          v-on:click="make_calculation"
+        >
           Calcular
         </button>
       </div>
       <br />
-      <table class="table table-bordered table-striped" style="">
-        <thead>
-          <tr class="text-center bg-info text-light">
-            <th rowspan="2">ID</th>
-            <th rowspan="2">Nombre</th>
-            <th rowspan="2">Fecha Cálculo</th>
-            <th colspan="3">Precio por Temporada ($)</th>
-          </tr>
-          <tr class="text-center bg-info text-light">
-            <th>Alta</th>
-            <th>Media</th>
-            <th>Baja</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="text-center">
-            <td>{{ id_calculation }}</td>
-            <td>{{ hotel_name }}</td>
-            <td>{{ date }}</td>
-            <td class="Highprice">{{ h_price | currency }}</td>
-            <td class="Mediumprice">{{ m_price | currency }}</td>
-            <td class="Lowprice">{{ l_price | currency }}</td>
-          </tr>
-        </tbody>
-      </table>
+
+      <b-table-simple
+        id="table_results"
+        class="table table-bordered table-striped text-center align-middle"
+        hover
+        small
+        caption-top
+        responsive
+        table-bordered
+        table-striped
+      >
+        <b-thead head-variant="dark">
+          <b-tr class="text-center bg-info text-light">
+            <b-th rowspan="2" class="align-middle">ID</b-th>
+            <b-th rowspan="2" class="align-middle">Nombre</b-th>
+            <b-th rowspan="2" class="align-middle">Fecha Cálculo</b-th>
+            <b-th colspan="3">Precio por Temporada ($)</b-th>
+          </b-tr>
+          <b-tr class="text-center bg-info text-light">
+            <b-th>Alta</b-th>
+            <b-th>Media</b-th>
+            <b-th>Baja</b-th>
+          </b-tr>
+        </b-thead>
+        <b-tbody>
+          <b-tr>
+            <b-td>{{ id_calculation }}</b-td>
+            <b-td>{{ hotel_name }}</b-td>
+            <b-td>{{ date }}</b-td>
+            <b-td class="Highprice">{{ h_price | currency }}</b-td>
+            <b-td class="Mediumprice">{{ m_price | currency }}</b-td>
+            <b-td class="Lowprice">{{ l_price | currency }}</b-td>
+          </b-tr>
+        </b-tbody>
+      </b-table-simple>
     </div>
   </div>
 </template>
@@ -135,12 +149,15 @@ export default {
   text-align: center;
 }
 .Highprice {
-  background-color: #D8FECA;
+  background-color: #d8feca;
 }
 .Mediumprice {
-  background-color: #FFFF48;
+  background-color: #ffff48;
 }
 .Lowprice {
-  background-color: #FF7856;
-}      
+  background-color: #ff7856;
+}
+b-table-simple {
+  padding: 1.5em 2em;
+}
 </style>

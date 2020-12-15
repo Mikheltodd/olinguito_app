@@ -55,7 +55,7 @@ export default {
         this.$router.push({ name: "calculation" });
       }
     },
-     getList: function () {
+    getList: function () {
       if (this.$route.name != "Lista_hoteles") {
         this.$router.push({ name: "Lista_hoteles" });
       }
