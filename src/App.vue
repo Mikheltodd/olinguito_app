@@ -1,9 +1,14 @@
 <template>
   <div id="app">
     <div class="wrapper">
-      <header>
-        <img src="../img/olinguito-white.png" alt="logo" type="text/css" />
-        <nav>
+      <header class="d-flex justify-content-between">
+        <img
+          src="../img/olinguito-white.png"
+          alt="logo"
+          type="text/css"
+          class="d-flex justify-content-start"
+        />
+        <nav class="d-flex justify-content-end">
           <button v-on:click="init" v-if="is_auth">Inicio</button>
           <button v-on:click="getBalance" v-if="is_auth">Hotel</button>
           <button v-on:click="getCalculation" v-if="is_auth">Cálculo</button>
@@ -11,11 +16,11 @@
         </nav>
       </header>
 
-      <main>
+      <main class="d-flex align-items-center">
         <router-view></router-view>
       </main>
 
-      <footer>
+      <footer class="d-flex">
         <p>&copy; Misión TIC 2022</p>
       </footer>
     </div>
@@ -96,9 +101,6 @@ header {
   position: sticky;
   top: 0;
   z-index: 1;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   align-items: center;
   padding: 0.5em 2em;
   max-height: 15vh;
@@ -118,14 +120,11 @@ header h1 {
 }
 
 header img {
-  display: flex;
   max-height: 10vh;
   width: auto;
 }
 
 header nav {
-  display: flex;
-  justify-content: flex-end;
   max-height: 10vh;
   width: auto;
 }
@@ -177,8 +176,6 @@ footer {
   grid-area: footer;
   position: sticky;
   bottom: 0;
-  display: flex;
-  flex-direction: row;
   align-items: center;
   padding: 1em;
   color: white;
