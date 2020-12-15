@@ -11,7 +11,7 @@
             <th>Cantidad dias temp media</th>
           </tr>
           <tr v-for="(item,index) in hotels">
-            <td>{{index}}</td>
+            <td>{{index+1}}</td>
             <td>{{item.name}}</td>
             <td>{{item.n_rooms}}</td>
             <td>{{item.total_operation_cost | currency}}</td>

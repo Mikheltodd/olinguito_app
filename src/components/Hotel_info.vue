@@ -26,7 +26,7 @@
           </b-tr>
           <b-tr>
             <b-th class="text-left">Costo de operación:</b-th>
-            <b-td class="text-center">{{ total_operation_cost }}</b-td>
+            <b-td class="text-center">{{ total_operation_cost | currency}}</b-td>
           </b-tr>
           <b-tr>
             <b-th class="text-left">Días de temporada baja:</b-th>
