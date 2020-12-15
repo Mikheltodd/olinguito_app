@@ -1,29 +1,68 @@
 <template>
   <div id="app">
-    <div class="wrapper">
-      <header class="d-flex justify-content-between">
-        <img
-          src="../img/olinguito-white.png"
-          alt="logo"
-          type="text/css"
-          class="d-flex justify-content-start"
-        />
-        <nav class="d-flex justify-content-end">
-          <button v-on:click="init" v-if="is_auth">Inicio</button>
-          <button v-on:click="getBalance" v-if="is_auth">Hotel</button>
-          <button v-on:click="getCalculation" v-if="is_auth">Cálculo</button>
-          <button v-on:click="getList">Lista de hoteles</button>
-        </nav>
-      </header>
-
-      <main class="d-flex align-items-center">
+    <header
+      class="row d-flex justify-content-between align-items-center fixed-top"
+    >
+      <img
+        src="../img/olinguito-white.png"
+        alt="logo"
+        type="text/css"
+        class="d-flex justify-content-start"
+      />
+      <div
+        class="btn-group btn-group-toggle d-flex flex-wrap justify-content-end"
+        role="group"
+        data-toggle="buttons"
+        aria-label="Basic example"
+        style="
+          background-color: rgba(255, 255, 255, 0.7);
+          border-radius: 0.25rem;
+          font-weight: bold;
+        "
+      >
+        <button
+          v-on:click="init"
+          v-if="is_auth"
+          type="button"
+          class="btn btn-outline-dark d-flex flex-wrap"
+        >
+          Inicio
+        </button>
+        <button
+          v-on:click="getBalance"
+          v-if="is_auth"
+          type="button"
+          class="btn btn-outline-dark d-flex flex-wrap"
+        >
+          Hotel
+        </button>
+        <button
+          v-on:click="getCalculation"
+          v-if="is_auth"
+          type="button"
+          class="btn btn-outline-dark d-flex flex-wrap"
+        >
+          Cálculo
+        </button>
+        <button
+          v-on:click="getList"
+          type="button"
+          class="btn btn-outline-dark d-flex flex-wrap"
+        >
+          Lista de hoteles
+        </button>
+      </div>
+    </header>
+    <main class="container-fluid">
+      <div class="row" style="height: 15vh"></div>
+      <div class="row" style="min-height: 70vh">
         <router-view></router-view>
-      </main>
-
-      <footer class="d-flex">
-        <p>&copy; Misión TIC 2022</p>
-      </footer>
-    </div>
+      </div>
+      <div class="row" style="height: 15vh"></div>
+    </main>
+    <footer class="row d-flex align-middle fixed-bottom" style="">
+      <p>&copy; Misión TIC 2022</p>
+    </footer>
   </div>
 </template>
 
@@ -87,19 +126,19 @@ export default {
   padding: 0;
 }
 
-.wrapper {
+/* .wrapper {
   display: grid;
   grid-template-areas:
-    "header "
+    "header"
     "main"
     "footer";
   min-height: 100vh;
-}
+} */
 
 header {
-  grid-area: header;
+  /* grid-area: header;
   position: sticky;
-  top: 0;
+  top: 0; */
   z-index: 1;
   align-items: center;
   padding: 0.5em 2em;
@@ -110,26 +149,26 @@ header {
   background-size: cover;
 }
 
-header h1 {
+/* header h1 {
   max-width: 16em;
   margin: 0;
   font-size: 12vh;
   font-weight: bold;
   line-height: 0.9;
   text-align: center;
-}
+} */
 
 header img {
   max-height: 10vh;
   width: auto;
 }
 
-header nav {
+/* header nav {
   max-height: 10vh;
   width: auto;
-}
+} */
 
-button {
+/* button {
   display: inline-flex;
   padding: 0.675em;
   font-weight: bolder;
@@ -139,14 +178,14 @@ button {
   background-color: rgba(255, 255, 255, 0.6);
   margin: 0.5em;
   align-items: center;
-}
+} */
 
-button:hover {
+/* button:hover {
   color: black;
   background: white;
-}
+} */
 
-main {
+/* main {
   grid-area: main;
   display: flex;
   flex-direction: column;
@@ -157,25 +196,25 @@ main {
   line-height: 1.5em;
   color: black;
   background-color: rgba(255, 254, 209, 0.5);
-}
+} */
 
-main button {
+/* main button {
   display: flex;
   overflow: auto;
   color: black;
   background-color: aqua;
-}
+} */
 
-article {
+/* article {
   max-width: 36em;
   margin: 0 auto;
   padding: 1em;
-}
+} */
 
 footer {
-  grid-area: footer;
+  /* grid-area: footer;
   position: sticky;
-  bottom: 0;
+  bottom: 0; */
   align-items: center;
   padding: 1em;
   color: white;
@@ -194,5 +233,72 @@ footer p {
   border-radius: 0.5em;
   padding: 1em;
   margin: 0.5em;
+  align-items: center;
+}
+
+html {
+  font-size: 1rem;
+}
+
+@include media-breakpoint-up(sm) {
+  html {
+    font-size: 1.2rem;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  html {
+    font-size: 1.4rem;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  html {
+    font-size: 1.6rem;
+  }
+}
+
+@media (min-width: 364px) {
+  .btn {
+    font-weight: bold;
+    font-size: 0.7rem;
+    padding: 0.5em;
+  }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+  .btn {
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 0.5em;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .btn {
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding: 0.5em;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .btn {
+    font-weight: bold;
+    font-size: 1.175em;
+    padding: 0.5em;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .btn {
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding: 0.5em;
+  }
 }
 </style>
