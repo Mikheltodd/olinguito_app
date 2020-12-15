@@ -120,12 +120,14 @@ header h1 {
 header img {
   display: flex;
   max-height: 10vh;
+  width: auto;
 }
 
 header nav {
   display: flex;
   justify-content: flex-end;
-  width: 50%;
+  max-height: 10vh;
+  width: auto;
 }
 
 button {
@@ -185,6 +187,7 @@ footer {
   background-size: cover;
   justify-content: center;
   max-height: 15vh;
+  width: auto;
 }
 
 footer p {
