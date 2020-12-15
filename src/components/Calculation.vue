@@ -63,9 +63,9 @@
             <td>{{ id_calculation }}</td>
             <td>{{ hotel_name }}</td>
             <td>{{ date }}</td>
-            <td class="Highprice">{{ h_price }}</td>
-            <td class="Mediumprice">{{ m_price }}</td>
-            <td class="Lowprice">{{ l_price }}</td>
+            <td class="Highprice">{{ h_price | currency }}</td>
+            <td class="Mediumprice">{{ m_price | currency }}</td>
+            <td class="Lowprice">{{ l_price | currency }}</td>
           </tr>
         </tbody>
       </table>

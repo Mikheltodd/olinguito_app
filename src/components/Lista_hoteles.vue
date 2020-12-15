@@ -5,7 +5,7 @@
             <th>ID</th>
             <th>Nombre</th>
             <th>Numero de habitaciones</th>
-            <th>Operacion de costo diario</th>
+            <th>Costo de operación diario</th>
             <th>Cantidad dias temp baja</th>
             <th>Cantidad dias temp alta</th>
             <th>Cantidad dias temp media</th>
@@ -14,7 +14,7 @@
             <td>{{index}}</td>
             <td>{{item.name}}</td>
             <td>{{item.n_rooms}}</td>
-            <td>{{item.total_operation_cost}}</td>
+            <td>{{item.total_operation_cost | currency}}</td>
             <td>{{item.l_days}}</td>
             <td>{{item.h_days}}</td>
             <td>{{365-item.l_days-item.h_days}}</td>
