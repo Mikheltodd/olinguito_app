@@ -64,7 +64,7 @@
             <b-th rowspan="2" class="align-middle">ID</b-th>
             <b-th rowspan="2" class="align-middle">Nombre</b-th>
             <b-th rowspan="2" class="align-middle">Fecha Cálculo</b-th>
-            <b-th colspan="3">Precio por Temporada ($)</b-th>
+            <b-th colspan="3">Precio por Temporada</b-th>
           </b-tr>
           <b-tr class="text-center bg-info text-light">
             <b-th>Alta</b-th>
@@ -76,7 +76,7 @@
           <b-tr>
             <b-td>{{ id_calculation }}</b-td>
             <b-td>{{ hotel_name }}</b-td>
-            <b-td>{{ date }}</b-td>
+            <b-td>{{ date | formatDate }}</b-td>
             <b-td class="Highprice">{{ h_price | currency }}</b-td>
             <b-td class="Mediumprice">{{ m_price | currency }}</b-td>
             <b-td class="Lowprice">{{ l_price | currency }}</b-td>

@@ -7,6 +7,7 @@ import router from "./router";
 import VueCurrencyFilter from "vue-currency-filter";
 import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
 import vueScrollto from "vue-scrollto";
+import moment from 'moment';
 
 Vue.use(vueRouter);
 Vue.config.productionTip = false;
@@ -21,6 +22,11 @@ Vue.use(VueCurrencyFilter, {
   symbolSpacing: true // Indica si debe poner un espacio entre el símbolo y la cantidad
 });
 Vue.use(vueScrollto);
+Vue.filter('formatDate', function(value) {
+  if (value) {
+    return moment(String(value)).format('MM/DD/YYYY')
+  }
+});
 
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
