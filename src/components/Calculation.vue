@@ -10,10 +10,10 @@
           v-model="hotel_name"
           required
         >
-          <option selected value="">Seleccione un hotel</option>
-          <option value="Hotel1">Hotel 1</option>
+          <option v-for="i in hotels" selected value="">{{i.name}}</option>
+          <!--<option value="Hotel1">Hotel 1</option>
           <option value="Hotel2">Hotel 2</option>
-          <option value="olinguito">Olinguito</option>
+          <option value="olinguito">Olinguito</option>-->
         </select>
       </div>
       <div class="form-group">
@@ -130,6 +130,18 @@ export default {
           alert("Error en el servidor");
         });
     },
+  },
+   created: function () {
+    let self = this;
+    axios
+      .get("http://127.0.0.1:8000/hotel/list")
+      .then((response) => {
+        self.hotels = response.data;
+        console.log(self.hotels);
+      })
+      .catch((error) => {
+        alert("Error de servidor");
+      });
   },
 };
 </script>
