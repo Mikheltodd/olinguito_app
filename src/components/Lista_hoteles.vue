@@ -17,7 +17,7 @@
             <td>{{item.total_operation_cost}}</td>
             <td>{{item.l_days}}</td>
             <td>{{item.h_days}}</td>
-            <td>{{item.l_days}}</td>
+            <td>{{365-item.l_days-item.h_days}}</td>
 
           </tr>
       </table>
