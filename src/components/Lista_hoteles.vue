@@ -1,6 +1,21 @@
 <template>
-  <div class="container-fluid">
-    <b-table-simple
+  <b-container fluid style= "background: url(https://images.pexels.com/photos/129731/pexels-photo-129731.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)
+  center center no-repeat;
+  padding: 5em" >
+    <b-row align-h="center">
+      <b-col sm="auto">
+        <h3 style="padding:0.5em;
+        background-color: rgba(255, 255, 255, 0.7);
+        border-radius: 0.5em;
+        margin: 1"
+        >
+          Listado de hoteles 
+        </h3>
+      </b-col>
+    </b-row>
+    <b-row>
+      <b-col>
+          <b-table-simple
       class="table table-bordered table-striped text-center"
       hover
       small
@@ -8,6 +23,7 @@
       responsive
       table-bordered
       table-striped
+      style="background-color: rgba(255, 255, 255, 0.7)"
     >
       <b-thead head-variant="dark" style="text-align: center">
         <b-tr class="text-center bg-info text-light">
@@ -38,7 +54,11 @@
         </b-tr>
       </b-tbody>
     </b-table-simple>
-  </div>
+      </b-col>
+    </b-row>
+    
+    
+  </b-container>
 </template>
 <script>
 import axios from "axios";
