@@ -1,5 +1,5 @@
 <template>
-  <div id="Lista_hoteles">
+  <div class="container-fluid">
     <b-table-simple
       class="table table-bordered table-striped text-center"
       hover

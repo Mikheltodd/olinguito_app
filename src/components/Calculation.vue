@@ -1,89 +1,93 @@
 <template>
   <div>
-    <div id="Calculation">
-      <div class="form-group">
-        <label for="exampleFormControlSelect1">Nombre del Hotel:</label>
-        <select
-          name="hotel"
-          class="form-control form-control-sm"
-          id="exampleFormControlSelect1"
-          v-model="hotel_name"
-          required
-        >
-          <option selected value="">Seleccione un hotel</option>
-          <option value="Hotel1">Hotel 1</option>
-          <option value="Hotel2">Hotel 2</option>
-          <option value="olinguito">Olinguito</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="exampleInput1">Utilidad Esperada (%):</label>
-        <input
-          type="number"
-          class="form-control form-control-sm"
-          id="exampleInput1"
-          placeholder="Utilidad esperada"
-          v-model="expected_profit"
-          required
-        />
-      </div>
-      <div class="form-group">
-        <label for="exampleInput2">Imprevistos (%):</label>
-        <input
-          type="number"
-          class="form-control form-control-sm"
-          id="exampleInput2"
-          placeholder="Imprevistos"
-          v-model="incidental_value"
-          required
-        />
-      </div>
-      <div class="form-group">
-        <button
-          v-scroll-to="'#table_results'"
-          class="btn btn-success"
-          v-on:click="make_calculation"
-        >
-          Calcular
-        </button>
-      </div>
-      <br />
+    <b-container fluid>
+      <b-row>
+        <b-col sm="auto">
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Nombre del Hotel:</label>
+            <select
+              name="hotel"
+              class="form-control form-control-sm"
+              id="exampleFormControlSelect1"
+              v-model="hotel_name"
+              required
+            >
+              <option selected value="">Seleccione un hotel</option>
+              <option value="Hotel1">Hotel 1</option>
+              <option value="Hotel2">Hotel 2</option>
+              <option value="olinguito">Olinguito</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="exampleInput1">Utilidad Esperada (%):</label>
+            <input
+              type="number"
+              class="form-control form-control-sm"
+              id="exampleInput1"
+              placeholder="Utilidad esperada"
+              v-model="expected_profit"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="exampleInput2">Imprevistos (%):</label>
+            <input
+              type="number"
+              class="form-control form-control-sm"
+              id="exampleInput2"
+              placeholder="Imprevistos"
+              v-model="incidental_value"
+              required
+            />
+            <br />
+            <button
+              v-scroll-to="'#table_results'"
+              class="btn btn-success"
+              v-on:click="make_calculation"
+            >
+              Calcular
+            </button>
+          </div>
+        </b-col>
 
-      <b-table-simple
-        id="table_results"
-        class="table table-bordered table-striped text-center align-middle"
-        hover
-        small
-        caption-top
-        responsive
-        table-bordered
-        table-striped
-      >
-        <b-thead head-variant="dark">
-          <b-tr class="text-center bg-info text-light">
-            <b-th rowspan="2" class="align-middle">ID</b-th>
-            <b-th rowspan="2" class="align-middle">Nombre</b-th>
-            <b-th rowspan="2" class="align-middle">Fecha Cálculo</b-th>
-            <b-th colspan="3">Precio por Temporada</b-th>
-          </b-tr>
-          <b-tr class="text-center bg-info text-light">
-            <b-th>Alta</b-th>
-            <b-th>Media</b-th>
-            <b-th>Baja</b-th>
-          </b-tr>
-        </b-thead>
-        <b-tbody>
-          <b-tr>
-            <b-td>{{ id_calculation }}</b-td>
-            <b-td>{{ hotel_name }}</b-td>
-            <b-td>{{ date | formatDate }}</b-td>
-            <b-td class="Highprice">{{ h_price | currency }}</b-td>
-            <b-td class="Mediumprice">{{ m_price | currency }}</b-td>
-            <b-td class="Lowprice">{{ l_price | currency }}</b-td>
-          </b-tr>
-        </b-tbody>
-      </b-table-simple>
-    </div>
+        <b-col sm="auto">
+          <b-table-simple
+            id="table_results"
+            class="table table-bordered table-striped text-center align-middle"
+            hover
+            small
+            caption-top
+            responsive
+            table-bordered
+            table-striped
+          >
+            <b-thead head-variant="dark">
+              <b-tr class="text-center bg-info text-light">
+                <b-th rowspan="2" class="align-middle">ID</b-th>
+                <b-th rowspan="2" class="align-middle">Nombre</b-th>
+                <b-th rowspan="2" class="align-middle">Fecha Cálculo</b-th>
+                <b-th colspan="3">Precio por Temporada</b-th>
+              </b-tr>
+              <b-tr class="text-center bg-info text-light">
+                <b-th>Alta</b-th>
+                <b-th>Media</b-th>
+                <b-th>Baja</b-th>
+              </b-tr>
+            </b-thead>
+            <b-tbody>
+              <b-tr>
+                <b-td>{{ id_calculation }}</b-td>
+                <b-td>{{ hotel_name }}</b-td>
+                <b-td>{{ date | formatDate }}</b-td>
+                <b-td class="Highprice">{{ h_price | currency }}</b-td>
+                <b-td class="Mediumprice">{{ m_price | currency }}</b-td>
+                <b-td class="Lowprice">{{ l_price | currency }}</b-td>
+              </b-tr>
+            </b-tbody>
+          </b-table-simple>
+        </b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 <script>

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header
-      class="row d-flex justify-content-between align-items-center fixed-top"
+      class="d-flex flex-grow-1 justify-content-between align-items-center fixed-top"
     >
       <img
         src="../img/olinguito-white.png"
@@ -55,13 +55,18 @@
     </header>
     <main class="container-fluid">
       <div class="row" style="height: 15vh"></div>
-      <div class="row" style="min-height: 70vh">
+      <div
+        class="row flex-grow-1 d-flex align-items-center"
+        style="min-height: 70vh"
+      >
         <router-view></router-view>
       </div>
       <div class="row" style="height: 15vh"></div>
     </main>
-    <footer class="row d-flex align-middle fixed-bottom" style="">
-      <p>&copy; Misión TIC 2022</p>
+    <footer class="row d-flex flex-grow-1 fixed-bottom">
+      <div class="d-flex justify-content-center">
+        <p>&copy; Misión TIC 2022</p>
+      </div>
     </footer>
   </div>
 </template>
@@ -288,7 +293,7 @@ html {
 @media (min-width: 992px) {
   .btn {
     font-weight: bold;
-    font-size: 1.175em;
+    font-size: 1.175rem;
     padding: 0.5em;
   }
 }
