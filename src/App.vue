@@ -9,49 +9,34 @@
         type="text/css"
         class="d-flex justify-content-start"
       />
-      <div
-        class="btn-group btn-group-toggle d-flex flex-wrap justify-content-end"
-        role="group"
-        data-toggle="buttons"
-        aria-label="Basic example"
+      <b-button-group
         style="
           background-color: rgba(255, 255, 255, 0.7);
-          border-radius: 0.25rem;
-          font-weight: bold;
+          border-radius: 0.25em;
         "
       >
-        <button
-          v-on:click="init"
-          v-if="is_auth"
-          type="button"
-          class="btn btn-outline-dark d-flex flex-wrap"
+        <b-button v-on:click="init" v-if="is_auth" variant="outline-dark"
+          >Inicio</b-button
         >
-          Inicio
-        </button>
-        <button
-          v-on:click="getBalance"
-          v-if="is_auth"
-          type="button"
-          class="btn btn-outline-dark d-flex flex-wrap"
-        >
-          Hotel
-        </button>
-        <button
-          v-on:click="getCalculation"
-          v-if="is_auth"
-          type="button"
-          class="btn btn-outline-dark d-flex flex-wrap"
-        >
-          Cálculo
-        </button>
-        <button
-          v-on:click="getList"
-          type="button"
-          class="btn btn-outline-dark d-flex flex-wrap"
-        >
-          Lista de hoteles
-        </button>
-      </div>
+        <b-dropdown right text="Hoteles" variant="outline-dark">
+          <b-dropdown-item>Crear Hotel</b-dropdown-item>
+          <b-dropdown-divider></b-dropdown-divider>
+          <b-dropdown-item v-on:click="getBalance" v-if="is_auth"
+            >Detalles del Hotel</b-dropdown-item
+          >
+          <b-dropdown-item v-on:click="getList"
+            >Lista de Hoteles</b-dropdown-item
+          >
+        </b-dropdown>
+        <b-dropdown right text="Cálculos" variant="outline-dark">
+          <b-dropdown-item v-on:click="getCalculation" v-if="is_auth"
+            >Realizar Cálculos</b-dropdown-item
+          >
+          <b-dropdown-divider></b-dropdown-divider>
+          <b-dropdown-item>Historial de Cálculos</b-dropdown-item>
+        </b-dropdown>
+        <b-button variant="outline-dark">Logout</b-button>
+      </b-button-group>
     </header>
     <main class="container-fluid">
       <div class="row" style="height: 15vh"></div>

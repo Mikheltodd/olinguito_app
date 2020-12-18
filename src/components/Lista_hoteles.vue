@@ -4,7 +4,7 @@
     style="
       background: url(https://images.pexels.com/photos/129731/pexels-photo-129731.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)
         center center no-repeat;
-      padding: 5em;
+      padding: 5em 1em;
       background-size: cover;
     "
   >
@@ -18,7 +18,7 @@
             margin: 1;
           "
         >
-          Listado de hoteles
+          Lista de hoteles
         </h3>
       </b-col>
     </b-row>
