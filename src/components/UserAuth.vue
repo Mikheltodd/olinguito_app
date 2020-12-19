@@ -52,7 +52,7 @@
           <b-button variant="outline-dark" type="submit" style="margin: 0.5em"
             >Iniciar Sesión</b-button
           >
-          <b-alert show variant="success" style="margin: 0">{{
+          <b-alert v-if="show" show variant="warning" style="margin: 0; font-size: 0.5em">{{
             message
           }}</b-alert>
         </b-form>
@@ -72,6 +72,7 @@ export default {
         password: "",
       },
       message: "",
+      show:false
     };
   },
   methods: {
@@ -86,9 +87,11 @@ export default {
         .catch((error) => {
           if (error.response.status == "404")
             this.message = "Usuario no encontrado.";
+            this.show=true;
 
           if (error.response.status == "403")
             this.message = "Contraseña Erronea.";
+            this.show=true;
         });
     },
   },
