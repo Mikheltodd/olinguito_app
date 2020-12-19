@@ -20,9 +20,10 @@
         >
         <b-dropdown right text="Hoteles" v-if="is_auth" variant="outline-dark">
           <b-dropdown-item v-on:click="create_hotel"
-            >Crear Hotel</b-dropdown-item>
+            >Crear Hotel</b-dropdown-item
+          >
           <b-dropdown-divider></b-dropdown-divider>
-          
+
           <b-dropdown-item v-on:click="getBalance" v-if="is_auth"
             >Detalles del Hotel</b-dropdown-item
           >
@@ -45,7 +46,10 @@
         >
       </b-button-group>
     </header>
-    <main class="container-fluid">
+    <main
+      class="container-fluid"
+      style="background-color: rgba(255, 254, 209, 0.7)"
+    >
       <div class="row" style="height: 15vh"></div>
       <div
         class="row flex-grow-1 d-flex align-items-center"
@@ -55,9 +59,17 @@
       </div>
       <div class="row" style="height: 15vh"></div>
     </main>
-    <footer class="row d-flex flex-grow-1 fixed-bottom">
-      <div class="d-flex justify-content-center">
-        <p>&copy; Misión TIC 2022</p>
+    <footer class="row d-flex flex-grow-1 align-items-center fixed-bottom">
+      <div
+        style="
+          font-weight: bolder;
+          color: black;
+          background-color: rgba(255, 255, 255, 0.6);
+          border-radius: 0.5em;
+          padding: 0.5em;
+        "
+      >
+        &copy; Misión TIC 2022
       </div>
     </footer>
   </div>
@@ -112,12 +124,11 @@ export default {
         this.$router.push({ name: "user", params: { username: username } });
       }
     },
-    create_hotel: function(){
-      if(this.$route.name != "creation_hotel"){
+    create_hotel: function () {
+      if (this.$route.name != "creation_hotel") {
         this.$router.push({
-          name:"creation_hotel"
+          name: "creation_hotel",
         });
-
       }
     },
     getBalance: function () {

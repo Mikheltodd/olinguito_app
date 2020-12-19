@@ -2,11 +2,11 @@
   <b-container
     fluid
     style="
-      background: url(https://images.pexels.com/photos/2844474/pexels-photo-2844474.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)
-        center center no-repeat;
+      background: url(https://images.pexels.com/photos/3771110/pexels-photo-3771110.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)
+        bottom center no-repeat;
       background-size: cover;
-      padding-top: 3em;
-      padding-bottom: 3em;
+      padding-top: 2em;
+      padding-bottom: 1em;
     "
   >
     <b-row align-h="center">
@@ -16,7 +16,7 @@
             padding: 0.5em;
             background-color: rgba(255, 255, 255, 0.7);
             border-radius: 0.5em;
-            margin: 1;
+            text-align: center;
           "
         >
           Autenticación
@@ -28,9 +28,10 @@
         sm="auto"
         style="
           text-align: center;
-          background-color: rgba(255, 255, 255, 0.7);
           padding: 1em;
-          border-radius: 0.25em;
+          margin: 1em;
+          background-color: rgba(255, 255, 255, 0.7);
+          border-radius: 0.5em;
         "
       >
         <b-form v-on:submit.prevent="processAuthUser">
@@ -48,16 +49,12 @@
               placeholder="Contraseña"
             ></b-form-input
           ></b-form-row>
-          <b-form-row
-            style="margin-top: 0.5em; margin-bottom: 0.5em"
-            align-h="center"
-            ><b-button variant="outline-dark" type="submit"
-              >Iniciar Sesión</b-button
-            ></b-form-row
+          <b-button variant="outline-dark" type="submit" style="margin: 0.5em"
+            >Iniciar Sesión</b-button
           >
-          <b-form-row style="margin-top: 0.5em; margin-bottom: 0.5em"
-            ><b-alert show>{{ message }}</b-alert></b-form-row
-          >
+          <b-alert show variant="success" style="margin: 0">{{
+            message
+          }}</b-alert>
         </b-form>
       </b-col>
     </b-row>
