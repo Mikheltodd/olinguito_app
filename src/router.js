@@ -4,7 +4,9 @@ import Hotel_info from "./components/Hotel_info";
 import Calculation from "./components/Calculation";
 import Lista_hoteles from "./components/Lista_hoteles";
 import Calculations_list from "./Components/Calculations_list";
+import UserAuth from './components/UserAuth'
 import App from "./App";
+import User from './components/User'
 const router = new vueRouter({
   mode: "history",
   base: __dirname,
@@ -14,6 +16,17 @@ const router = new vueRouter({
       name: "root",
       component: App
     },
+    {
+      path: '/user/:username',
+      name: "user",
+      component: User
+    },
+    {
+      path: '/user/auth',
+      name: "user_auth",
+      component: UserAuth
+    },
+  
     {
       path: "/hotel/:hotel_name",
       name: "hotel_name",

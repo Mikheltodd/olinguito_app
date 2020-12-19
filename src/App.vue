@@ -18,7 +18,7 @@
         <b-button v-on:click="init" v-if="is_auth" variant="outline-dark"
           >Inicio</b-button
         >
-        <b-dropdown right text="Hoteles" variant="outline-dark">
+        <b-dropdown right text="Hoteles" v-if="is_auth" variant="outline-dark">
           <b-dropdown-item>Crear Hotel</b-dropdown-item>
           <b-dropdown-divider></b-dropdown-divider>
           <b-dropdown-item v-on:click="getBalance" v-if="is_auth"
@@ -28,14 +28,14 @@
             >Lista de Hoteles</b-dropdown-item
           >
         </b-dropdown>
-        <b-dropdown right text="Cálculos" variant="outline-dark">
+        <b-dropdown right text="Cálculos" v-if="is_auth" variant="outline-dark">
           <b-dropdown-item v-on:click="getCalculation" v-if="is_auth"
             >Realizar Cálculos</b-dropdown-item
           >
           <b-dropdown-divider></b-dropdown-divider>
           <b-dropdown-item v-on:click="getCalculationsList" v-if="is_auth">Historial de Cálculos</b-dropdown-item>
         </b-dropdown>
-        <b-button variant="outline-dark">Cerrar sesión</b-button>
+        <b-button v-on:click="logOut" v-if="is_auth" variant="outline-dark">Cerrar sesión</b-button>
       </b-button-group>
     </header>
     <main class="container-fluid">
@@ -44,7 +44,7 @@
         class="row flex-grow-1 d-flex align-items-center"
         style="min-height: 70vh"
       >
-        <router-view></router-view>
+        <router-view v-on:log-in="logIn"></router-view>
       </div>
       <div class="row" style="height: 15vh"></div>
     </main>
@@ -57,6 +57,7 @@
 </template>
 
 <script>
+import vueRouter from "vue-router";
 export default {
   name: "App",
   components: {},
@@ -66,13 +67,44 @@ export default {
     };
   },
   methods: {
+    updateAuth: function(){
+      var self = this
+      self.is_auth  = localStorage.getItem('isAuth') || false
+
+      if(self.is_auth == false)
+        self.$router.push({name: "user_auth"})
+
+      else{
+        let username = localStorage.getItem("current_username")
+        self.$router.push({name: "user", params:{ username: username }})
+      }  
+    },
+
+    logIn: function(username){
+      localStorage.setItem('current_username', username)
+      localStorage.setItem('isAuth', true)
+      this.updateAuth()
+    },
+
+    logOut: function(){
+      localStorage.removeItem('isAuth')
+      localStorage.removeItem('current_username')
+      this.updateAuth()
+    },
+    
+    // init: function () {
+    //   if (this.$route.name != "hotel_name") {
+    //     let hotel_name = localStorage.getItem("current_hotel_name");
+    //     this.$router.push({
+    //       name: "hotel_name",
+    //       params: { hotel_name: hotel_name },
+    //     });
+    //   }
+    // },
     init: function () {
-      if (this.$route.name != "hotel_name") {
-        let hotel_name = localStorage.getItem("current_hotel_name");
-        this.$router.push({
-          name: "hotel_name",
-          params: { hotel_name: hotel_name },
-        });
+      if (this.$route.name != "user") {
+        let username = localStorage.getItem("current_username");
+        this.$router.push({ name: "user", params: { username: username } });
       }
     },
     getBalance: function () {
@@ -101,15 +133,19 @@ export default {
     }
 
   },
+   created: function(){
+    this.$router.push({name: "root"})
+    this.updateAuth()
+  }
 
-  beforeCreate: function () {
-    localStorage.setItem("current_hotel_name", "olinguito");
-    localStorage.setItem("isAuth", true);
-    this.$router.push({
-      name: "hotel_name",
-      params: { hotel_name: "olinguito" },
-    });
-  },
+  // beforeCreate: function () {
+  //   localStorage.setItem("current_hotel_name", "olinguito");
+  //   localStorage.setItem("isAuth", true);
+  //   this.$router.push({
+  //     name: "hotel_name",
+  //     params: { hotel_name: "olinguito" },
+  //   });
+  // },
 };
 </script>
 
