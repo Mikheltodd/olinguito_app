@@ -33,9 +33,13 @@
             >Realizar Cálculos</b-dropdown-item
           >
           <b-dropdown-divider></b-dropdown-divider>
-          <b-dropdown-item v-on:click="getCalculationsList" v-if="is_auth">Historial de Cálculos</b-dropdown-item>
+          <b-dropdown-item v-on:click="getCalculationsList" v-if="is_auth"
+            >Historial de Cálculos</b-dropdown-item
+          >
         </b-dropdown>
-        <b-button v-on:click="logOut" v-if="is_auth" variant="outline-dark">Cerrar sesión</b-button>
+        <b-button v-on:click="logOut" v-if="is_auth" variant="outline-dark"
+          >Cerrar sesión</b-button
+        >
       </b-button-group>
     </header>
     <main class="container-fluid">
@@ -67,31 +71,29 @@ export default {
     };
   },
   methods: {
-    updateAuth: function(){
-      var self = this
-      self.is_auth  = localStorage.getItem('isAuth') || false
+    updateAuth: function () {
+      var self = this;
+      self.is_auth = localStorage.getItem("isAuth") || false;
 
-      if(self.is_auth == false)
-        self.$router.push({name: "user_auth"})
-
-      else{
-        let username = localStorage.getItem("current_username")
-        self.$router.push({name: "user", params:{ username: username }})
-      }  
+      if (self.is_auth == false) self.$router.push({ name: "user_auth" });
+      else {
+        let username = localStorage.getItem("current_username");
+        self.$router.push({ name: "user", params: { username: username } });
+      }
     },
 
-    logIn: function(username){
-      localStorage.setItem('current_username', username)
-      localStorage.setItem('isAuth', true)
-      this.updateAuth()
+    logIn: function (username) {
+      localStorage.setItem("current_username", username);
+      localStorage.setItem("isAuth", true);
+      this.updateAuth();
     },
 
-    logOut: function(){
-      localStorage.removeItem('isAuth')
-      localStorage.removeItem('current_username')
-      this.updateAuth()
+    logOut: function () {
+      localStorage.removeItem("isAuth");
+      localStorage.removeItem("current_username");
+      this.updateAuth();
     },
-    
+
     // init: function () {
     //   if (this.$route.name != "hotel_name") {
     //     let hotel_name = localStorage.getItem("current_hotel_name");
@@ -126,17 +128,16 @@ export default {
         this.$router.push({ name: "Lista_hoteles" });
       }
     },
-    getCalculationsList: function(){
-      if(this.$route.name != "Calculations_list"){
-        this.$router.push({name:"Calculations_list"});
+    getCalculationsList: function () {
+      if (this.$route.name != "Calculations_list") {
+        this.$router.push({ name: "Calculations_list" });
       }
-    }
-
+    },
   },
-   created: function(){
-    this.$router.push({name: "root"})
-    this.updateAuth()
-  }
+  created: function () {
+    this.$router.push({ name: "root" });
+    this.updateAuth();
+  },
 
   // beforeCreate: function () {
   //   localStorage.setItem("current_hotel_name", "olinguito");
