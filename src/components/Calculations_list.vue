@@ -112,6 +112,17 @@ export default {
         });
     },
   },
-  created: function () {},
+  created: function () {
+      let self = this;
+    axios
+      .get("http://127.0.0.1:8000/hotel/calculationsHotels")
+      .then((response) => {
+        self.calculations = response.data;
+        console.log(calculations)
+      })
+      .catch((error) => {
+        alert("Error servidor");
+      });
+  },
 };
 </script>
