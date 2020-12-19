@@ -19,11 +19,14 @@
           >Inicio</b-button
         >
         <b-dropdown right text="Hoteles" v-if="is_auth" variant="outline-dark">
-          <b-dropdown-item>Crear Hotel</b-dropdown-item>
+          <b-dropdown-item v-on:click="create_hotel"
+            >Crear Hotel</b-dropdown-item>
           <b-dropdown-divider></b-dropdown-divider>
+          
           <b-dropdown-item v-on:click="getBalance" v-if="is_auth"
             >Detalles del Hotel</b-dropdown-item
           >
+          <b-dropdown-divider></b-dropdown-divider>
           <b-dropdown-item v-on:click="getList"
             >Lista de Hoteles</b-dropdown-item
           >
@@ -107,6 +110,14 @@ export default {
       if (this.$route.name != "user") {
         let username = localStorage.getItem("current_username");
         this.$router.push({ name: "user", params: { username: username } });
+      }
+    },
+    create_hotel: function(){
+      if(this.$route.name != "creation_hotel"){
+        this.$router.push({
+          name:"creation_hotel"
+        });
+
       }
     },
     getBalance: function () {

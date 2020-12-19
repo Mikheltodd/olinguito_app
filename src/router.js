@@ -7,6 +7,7 @@ import Calculations_list from "./Components/Calculations_list";
 import UserAuth from './components/UserAuth'
 import App from "./App";
 import User from './components/User'
+import Creation_hotel from './components/Creation_hotel'
 const router = new vueRouter({
   mode: "history",
   base: __dirname,
@@ -31,6 +32,11 @@ const router = new vueRouter({
       path: "/hotel/:hotel_name",
       name: "hotel_name",
       component: Hotel
+    },
+    {
+      path: "/hotel/create/",
+      name: "creation_hotel",
+      component: Creation_hotel  
     },
     {
       path: "/hotel/details/:hotel_name",
