@@ -21,9 +21,36 @@
         </h3>
       </b-col>
     </b-row>
+    <b-row align-h="center">
+      <b-col sm="auto">
+        <div class="form-group">
+          <select
+            name="hotel"
+            class="form-control form-control-sm"
+            id="exampleFormControlSelect1"
+            v-model="hotel_name"
+            required
+          >
+            <option selected value="">Seleccione un hotel</option>
+            <option value="Hotel1">Hotel 1</option>
+            <option value="Hotel2">Hotel 2</option>
+            <option value="olinguito">Olinguito</option>
+          </select>
+          <br/>
+           <button
+            v-scroll-to="'#table'"
+            class="btn btn-success"
+            v-on:click="make_consult"
+          >
+            Buscar
+          </button>
+        </div>
+      </b-col>
+    </b-row>
     <b-row>
       <b-col>
         <b-table-simple
+          id="table"
           class="table table-bordered table-striped text-center"
           hover
           small
@@ -47,14 +74,13 @@
             </b-tr>
           </b-thead>
           <b-tbody>
-            <b-tr v-for="(item, index) in calculatios" v-bind:key="item.name">
-              <b-td>{{ index+1 }}</b-td>
-              <b-td>{{  }}</b-td>
-              <b-td>{{  }}</b-td>
-              <b-td>{{  }}</b-td>
-              <b-td>{{  }}</b-td>
-              <b-td>{{  }}</b-td>
-              <b-td>{{ }}</b-td>
+            <b-tr v-for="(item) in calculations" v-bind:key="item.name">
+              <b-td>{{ item.id_calculation }}</b-td>
+              <b-td>{{ item.hotel_name  }}</b-td>
+              <b-td>{{ item.date | formatDate }}</b-td>
+              <b-td>{{ item.l_price | currency }}</b-td>
+              <b-td>{{ item.m_price | currency}}</b-td>
+              <b-td>{{ item.h_price |  currency }}</b-td>
             </b-tr>
           </b-tbody>
         </b-table-simple>
@@ -66,6 +92,30 @@
 import axios from "axios"
 export default {
     name: "Calculations_list",
+  data: function () {
+    return {
+      hotel_name: "",
+      calculations: [],
+    };
+  },
+  methods: {
+    make_consult: function(){
+  
+    let self = this;
 
+    axios
+      .get("http://127.0.0.1:8000/hotel/calculations/"+ this.hotel_name)
+      .then((response) => {
+        self.calculations = response.data;
+      })
+      .catch((error) => {
+        alert("Error de servidor");
+      });
+
+    }
+  },
+  created: function () {
+   
+  },
 }
 </script>
