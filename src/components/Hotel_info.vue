@@ -78,12 +78,11 @@
             class="form-control form-control-sm"
             id="exampleFormControlSelect1"
             v-model="hotel_name"
-            required
-          >
-            <option selected value="">Seleccione un hotel</option>
-            <option value="Hotel1">Hotel 1</option>
+            required>
+            <option v-for="item in hotels" v-bind:key="item.name" >{{item.name}}</option>
+            <!-- <option value="Hotel1">Hotel 1</option>
             <option value="Hotel2">Hotel 2</option>
-            <option value="olinguito">Olinguito</option>
+            <option value="olinguito">Olinguito</option> -->
           </select>
           <br />
           <button
@@ -114,6 +113,7 @@ export default {
       l_price: 0,
       m_price: 0,
       h_price: 0,
+      hotels:[],
     };
   },
   methods: {
@@ -140,7 +140,16 @@ export default {
   },
 
   created: function () {
-    
+    let self = this;
+    axios
+      .get("http://127.0.0.1:8000/hotel/list")
+      .then((response) => {
+        self.hotels = response.data;
+        console.log(self.hotels);
+      })
+      .catch((error) => {
+        alert("Error de servidor");
+      });
   },
 };
 </script>

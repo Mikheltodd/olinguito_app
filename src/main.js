@@ -24,7 +24,7 @@ Vue.use(VueCurrencyFilter, {
 Vue.use(vueScrollto);
 Vue.filter("formatDate", function(value) {
   if (value) {
-    return moment(String(value)).format("MM/DD/YYYY hh:mm:ss"); //Da formato a fechas
+    return moment(String(value)).format("MM/DD/YYYY"); //Da formato a fechas
   }
 });
 
