@@ -26,15 +26,33 @@
           </b-tr>
           <b-tr>
             <b-th class="text-left">Costo de operación:</b-th>
-            <b-td class="text-center">{{ total_operation_cost | currency}}</b-td>
+            <b-td class="text-center">{{
+              total_operation_cost | currency
+            }}</b-td>
           </b-tr>
           <b-tr>
-            <b-th class="text-left">Días de temporada baja:</b-th>
+            <b-th class="text-left">Días de Temporada Baja:</b-th>
             <b-td class="text-center">{{ l_days }}</b-td>
           </b-tr>
           <b-tr>
-            <b-th class="text-left">Días de temporada alta:</b-th>
+            <b-th class="text-left">Días de Temporada Media:</b-th>
+            <b-td class="text-center">{{ 365 - l_days - h_days }}</b-td>
+          </b-tr>
+          <b-tr>
+            <b-th class="text-left">Días de Temporada Alta:</b-th>
             <b-td class="text-center">{{ h_days }}</b-td>
+          </b-tr>
+          <b-tr>
+            <b-th class="text-left">Precio Temporada Baja:</b-th>
+            <b-td class="text-center">{{ l_price | currency }}</b-td>
+          </b-tr>
+          <b-tr>
+            <b-th class="text-left">Precio Temporada Media:</b-th>
+            <b-td class="text-center">{{ m_price | currency }}</b-td>
+          </b-tr>
+          <b-tr>
+            <b-th class="text-left">Precio Temporada Alta:</b-th>
+            <b-td class="text-center">{{ h_price | currency }}</b-td>
           </b-tr>
         </b-tbody>
         <b-tfoot>
@@ -58,6 +76,9 @@ export default {
       total_operation_cost: 0,
       l_days: 0,
       h_days: 0,
+      l_price: 0,
+      m_price: 0,
+      h_price: 0,
     };
   },
 
@@ -66,12 +87,15 @@ export default {
     let self = this;
 
     axios
-      .get("https://olinguito.herokuapp.com/hotel/details/" + this.hotel_name)
+      .get("http://127.0.0.1:8000/hotel/details/" + this.hotel_name)
       .then((result) => {
         self.n_rooms = result.data.n_rooms;
         self.total_operation_cost = result.data.total_operation_cost;
         self.l_days = result.data.l_days;
         self.h_days = result.data.h_days;
+        self.l_price = result.data.l_price;
+        self.m_price = result.data.m_price;
+        self.h_price = result.data.h_price;
       })
       .catch((error) => {
         alert("ERROR Servidor");

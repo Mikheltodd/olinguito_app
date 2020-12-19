@@ -39,11 +39,7 @@
               <b-th rowspan="2" class="align-middle">ID</b-th>
               <b-th rowspan="2" class="align-middle">Nombre</b-th>
               <b-th rowspan="2" class="align-middle">No. habitaciones</b-th>
-              <b-th rowspan="2" class="align-middle"
-                >Costo de operación <br />
-                diario</b-th
-              >
-              <b-th colspan="3">Días por Temporada</b-th>
+              <b-th colspan="3">Precios por Temporada</b-th>
             </b-tr>
             <b-tr class="text-center bg-info text-light">
               <b-th>Baja</b-th>
@@ -56,10 +52,9 @@
               <b-td>{{ index + 1 }}</b-td>
               <b-td>{{ item.name }}</b-td>
               <b-td>{{ item.n_rooms }}</b-td>
-              <b-td>{{ item.total_operation_cost | currency }}</b-td>
-              <b-td>{{ item.l_days }}</b-td>
-              <b-td>{{ item.h_days }}</b-td>
-              <b-td>{{ 365 - item.l_days - item.h_days }}</b-td>
+              <b-td>{{ item.l_price | currency }}</b-td>
+              <b-td>{{ item.m_price | currency }}</b-td>
+              <b-td>{{ item.h_price | currency }}</b-td>
             </b-tr>
           </b-tbody>
         </b-table-simple>
@@ -79,7 +74,7 @@ export default {
   created: function () {
     let self = this;
     axios
-      .get("https://olinguito.herokuapp.com/hotel/list")
+      .get("http://127.0.0.1:8000/hotel/list")
       .then((response) => {
         self.hotels = response.data;
         console.log(self.hotels);

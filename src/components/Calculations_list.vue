@@ -1,5 +1,5 @@
 <template>
-    <b-container
+  <b-container
     fluid
     style="
       background: url(https://images.pexels.com/photos/317356/pexels-photo-317356.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
@@ -36,8 +36,8 @@
             <option value="Hotel2">Hotel 2</option>
             <option value="olinguito">Olinguito</option>
           </select>
-          <br/>
-           <button
+          <br />
+          <button
             v-scroll-to="'#table'"
             class="btn btn-success"
             v-on:click="make_consult"
@@ -74,13 +74,13 @@
             </b-tr>
           </b-thead>
           <b-tbody>
-            <b-tr v-for="(item) in calculations" v-bind:key="item.name">
+            <b-tr v-for="item in calculations" v-bind:key="item.name">
               <b-td>{{ item.id_calculation }}</b-td>
-              <b-td>{{ item.hotel_name  }}</b-td>
+              <b-td>{{ item.hotel_name }}</b-td>
               <b-td>{{ item.date | formatDate }}</b-td>
               <b-td>{{ item.l_price | currency }}</b-td>
-              <b-td>{{ item.m_price | currency}}</b-td>
-              <b-td>{{ item.h_price |  currency }}</b-td>
+              <b-td>{{ item.m_price | currency }}</b-td>
+              <b-td>{{ item.h_price | currency }}</b-td>
             </b-tr>
           </b-tbody>
         </b-table-simple>
@@ -89,9 +89,9 @@
   </b-container>
 </template>
 <script>
-import axios from "axios"
+import axios from "axios";
 export default {
-    name: "Calculations_list",
+  name: "Calculations_list",
   data: function () {
     return {
       hotel_name: "",
@@ -99,23 +99,19 @@ export default {
     };
   },
   methods: {
-    make_consult: function(){
-  
-    let self = this;
+    make_consult: function () {
+      let self = this;
 
-    axios
-      .get("http://127.0.0.1:8000/hotel/calculations/"+ this.hotel_name)
-      .then((response) => {
-        self.calculations = response.data;
-      })
-      .catch((error) => {
-        alert("Error de servidor");
-      });
-
-    }
+      axios
+        .get("http://127.0.0.1:8000/hotel/calculations/" + this.hotel_name)
+        .then((response) => {
+          self.calculations = response.data;
+        })
+        .catch((error) => {
+          alert("Error de servidor");
+        });
+    },
   },
-  created: function () {
-   
-  },
-}
+  created: function () {},
+};
 </script>
