@@ -54,7 +54,7 @@ const router = new vueRouter({
       component: Lista_hoteles
     },
     {
-      path: "/hotel/Calculations_list/:hotel_name",
+      path: "/hotel/Calculations_list",
       name:"Calculations_list",
       component: Calculations_list
     }

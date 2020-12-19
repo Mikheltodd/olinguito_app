@@ -62,9 +62,8 @@
         >
           <b-thead head-variant="dark" style="text-align: center">
             <b-tr class="text-center bg-info text-light">
-              <b-th rowspan="2" class="align-middle">ID</b-th>
-              <b-th rowspan="2" class="align-middle">Nombre</b-th>
               <b-th rowspan="2" class="align-middle">Fecha de calculo</b-th>
+              <b-th rowspan="2" class="align-middle">Nombre</b-th>
               <b-th colspan="3">Precio por Temporada</b-th>
             </b-tr>
             <b-tr class="text-center bg-info text-light">
@@ -75,9 +74,8 @@
           </b-thead>
           <b-tbody>
             <b-tr v-for="item in calculations" v-bind:key="item.name">
-              <b-td>{{ item.id_calculation }}</b-td>
-              <b-td>{{ item.hotel_name }}</b-td>
               <b-td>{{ item.date | formatDate }}</b-td>
+              <b-td>{{ item.hotel_name }}</b-td>
               <b-td>{{ item.l_price | currency }}</b-td>
               <b-td>{{ item.m_price | currency }}</b-td>
               <b-td>{{ item.h_price | currency }}</b-td>
@@ -113,12 +111,11 @@ export default {
     },
   },
   created: function () {
-      let self = this;
+    let self = this;
     axios
       .get("http://127.0.0.1:8000/hotel/calculationsHotels")
       .then((response) => {
         self.calculations = response.data;
-        console.log(calculations)
       })
       .catch((error) => {
         alert("Error servidor");

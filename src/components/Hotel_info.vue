@@ -1,6 +1,8 @@
 <template>
-  <div class="show-data">
-    <div class="data-element">
+  <b-container fluid class="show-data">
+
+     <b-row  >
+       <b-col class="data-element">
       <b-table-simple
         hover
         small
@@ -61,8 +63,41 @@
           </b-tr>
         </b-tfoot>
       </b-table-simple>
-    </div>
-  </div>
+       </b-col>
+      <b-col sm="auto"
+      class="d-flex align-items-center justify-content-center"
+        style="text-align: center">
+        <div class="form-group"  style="
+            padding: 0.5em;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 0.5em;
+            margin: 1;
+          ">
+          <select
+            name="hotel"
+            class="form-control form-control-sm"
+            id="exampleFormControlSelect1"
+            v-model="hotel_name"
+            required
+          >
+            <option selected value="">Seleccione un hotel</option>
+            <option value="Hotel1">Hotel 1</option>
+            <option value="Hotel2">Hotel 2</option>
+            <option value="olinguito">Olinguito</option>
+          </select>
+          <br />
+          <button
+            v-scroll-to="'#table'"
+            class="btn btn-success"
+            v-on:click="make_consult"
+          >
+            Buscar
+          </button>
+        </div>
+      </b-col>
+    </b-row>
+   
+  </b-container>
 </template>
 
 <script>
@@ -81,9 +116,8 @@ export default {
       h_price: 0,
     };
   },
-
-  created: function () {
-    this.hotel_name = this.$route.params.hotel_name;
+  methods: {
+    make_consult: function(){
     let self = this;
 
     axios
@@ -100,6 +134,13 @@ export default {
       .catch((error) => {
         alert("ERROR Servidor");
       });
+
+    }
+
+  },
+
+  created: function () {
+    
   },
 };
 </script>
@@ -108,7 +149,7 @@ export default {
 .show-data {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+ justify-content: space-between; 
   background: url("https://images.pexels.com/photos/590041/pexels-photo-590041.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
     center center no-repeat;
   background-size: auto;
