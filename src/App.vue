@@ -33,9 +33,9 @@
             >Realizar Cálculos</b-dropdown-item
           >
           <b-dropdown-divider></b-dropdown-divider>
-          <b-dropdown-item>Historial de Cálculos</b-dropdown-item>
+          <b-dropdown-item v-on:click="getCalculationsList" v-if="is_auth">Historial de Cálculos</b-dropdown-item>
         </b-dropdown>
-        <b-button variant="outline-dark">Logout</b-button>
+        <b-button variant="outline-dark">Cerrar sesión</b-button>
       </b-button-group>
     </header>
     <main class="container-fluid">
@@ -94,6 +94,12 @@ export default {
         this.$router.push({ name: "Lista_hoteles" });
       }
     },
+    getCalculationsList: function(){
+      if(this.$route.name != "Calculations_list"){
+        this.$router.push({name:"Calculations_list"});
+      }
+    }
+
   },
 
   beforeCreate: function () {

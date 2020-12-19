@@ -134,6 +134,8 @@ export default {
       h_price: 0,
       m_price: 0,
       l_price: 0,
+      expected_profit: 0,
+      incidental_value: 0,
     };
   },
   methods: {

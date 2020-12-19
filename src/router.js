@@ -3,6 +3,7 @@ import Hotel from "./components/Hotel";
 import Hotel_info from "./components/Hotel_info";
 import Calculation from "./components/Calculation";
 import Lista_hoteles from "./components/Lista_hoteles";
+import Calculations_list from "./Components/Calculations_list";
 import App from "./App";
 const router = new vueRouter({
   mode: "history",
@@ -32,6 +33,11 @@ const router = new vueRouter({
       path: "/hotel/Lista_hoteles",
       name:"Lista_hoteles",
       component: Lista_hoteles
+    },
+    {
+      path: "/hotel/Calculations_list",
+      name:"Calculations_list",
+      component: Calculations_list
     }
 
   ]
