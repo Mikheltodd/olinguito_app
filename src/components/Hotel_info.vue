@@ -80,9 +80,6 @@
             v-model="hotel_name"
             required>
             <option v-for="item in hotels" v-bind:key="item.name" >{{item.name}}</option>
-            <!-- <option value="Hotel1">Hotel 1</option>
-            <option value="Hotel2">Hotel 2</option>
-            <option value="olinguito">Olinguito</option> -->
           </select>
           <br />
           <button

@@ -121,5 +121,18 @@ export default {
         alert("Error servidor");
       });
   },
+
+   created: function () {
+    let self = this;
+    axios
+      .get("http://127.0.0.1:8000/hotel/list")
+      .then((response) => {
+        self.hotels = response.data;
+        console.log(self.hotels);
+      })
+      .catch((error) => {
+        alert("Error de servidor");
+      });
+  },
 };
 </script>
