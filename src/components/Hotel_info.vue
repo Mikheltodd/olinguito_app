@@ -67,12 +67,23 @@
       <b-col sm="auto"
       class="d-flex align-items-center justify-content-center"
         style="text-align: center">
+        
         <div class="form-group"  style="
             padding: 0.5em;
             background-color: rgba(255, 255, 255, 0.7);
             border-radius: 0.5em;
             margin: 1;
           ">
+          <h5
+            style="
+                padding: 0.5em;
+                background-color: rgba(255, 255, 255, 0.7);
+                border-radius: 0.5em;
+                margin: 1;
+            "
+            >
+            Seleccione Hotel
+          </h5>
           <select
             name="hotel"
             class="form-control form-control-sm"
@@ -81,14 +92,18 @@
             required>
             <option v-for="item in hotels" v-bind:key="item.name" >{{item.name}}</option>
           </select>
-          <br />
+          <!-- <br /> -->
           <button
             v-scroll-to="'#table'"
             class="btn btn-success"
             v-on:click="make_consult"
+            style="margin: 0.5em"
           >
             Buscar
           </button>
+          <b-alert v-if="show" show variant="warning" style="margin: 0; font-size: 0.5em">{{
+            message
+          }}</b-alert>
         </div>
       </b-col>
     </b-row>
@@ -111,11 +126,14 @@ export default {
       m_price: 0,
       h_price: 0,
       hotels:[],
+      message:"",
+      show:false
     };
   },
   methods: {
     make_consult: function(){
     let self = this;
+    this.show=false
 
     axios
       .get("http://127.0.0.1:8000/hotel/details/" + this.hotel_name)
@@ -129,7 +147,10 @@ export default {
         self.h_price = result.data.h_price;
       })
       .catch((error) => {
-        alert("ERROR Servidor");
+        if (error.response.status == "404")
+                    this.message = "Seleccione un hotel.";
+                    this.show=true;
+        // alert("ERROR Servidor");
       });
 
     }

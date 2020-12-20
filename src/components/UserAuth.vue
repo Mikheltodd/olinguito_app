@@ -40,6 +40,7 @@
               type="text"
               v-model="user_in.username"
               placeholder="Nombre de Usuario"
+              required
             ></b-form-input>
           </b-form-row>
           <b-form-row style="margin-top: 0.5em; margin-bottom: 0.5em"
@@ -47,6 +48,7 @@
               type="password"
               v-model="user_in.password"
               placeholder="Contraseña"
+              required
             ></b-form-input
           ></b-form-row>
           <b-button variant="outline-dark" type="submit" style="margin: 0.5em"
