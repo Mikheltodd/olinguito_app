@@ -40,7 +40,9 @@
             v-model="hotel_name"
             required
           >
-            <option v-for="item in hotels" v-bind:key="item.name">{{item.name}}</option>
+            <option v-for="item in hotels" v-bind:key="item.name">
+              {{ item.name }}
+            </option>
           </select>
         </div>
         <div class="form-group">
@@ -69,9 +71,17 @@
             v-scroll-to="'#table_results'"
             class="btn btn-success"
             v-on:click="make_calculation"
+            style="margin: 0.5em"
           >
             Calcular
           </button>
+          <b-alert
+            v-if="show"
+            show
+            variant="danger"
+            style="margin: 0; font-size: 0.5em"
+            >{{ message }}</b-alert
+          >
         </div>
       </b-col>
 
@@ -134,6 +144,8 @@ export default {
       expected_profit: "",
       incidental_value: "",
       hotels: [],
+      message:"",
+      show:false
     };
   },
   methods: {
@@ -159,15 +171,26 @@ export default {
             (this.date = response.data.date),
             (this.h_price = response.data.h_price),
             (this.m_price = response.data.m_price),
-            (this.l_price = response.data.l_price)
+            (this.l_price = response.data.l_price),
+            this.show=false
           )
         )
         .catch((error) => {
-          alert("Error en el servidor");
+            if (error.response.status == "422")
+            this.message = "Por favor ingrese todos los datos";
+            this.show=true;
+            if (error.response.status == "400")
+              if (this.expected_profit<this.incidental_value)
+                this.message = "Porcentaje de utilidad no puede ser menor que el porcentaje de imprevistos";
+                this.show=true;
+              if (this.expected_profit<0 || this.incidental_value<0)
+                this.message = "Porcentaje de utilidad y/o Porcentaje de imprevistos no pueden ser negativos";
+                this.show=true;
+          // alert("Error en el servidor");
         });
     },
   },
-    created: function () {
+  created: function () {
     let self = this;
     axios
       .get("http://127.0.0.1:8000/hotel/list")
