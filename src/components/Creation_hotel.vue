@@ -68,8 +68,12 @@
                         required
                     ></b-form-input>
                 </b-form-row>
-                <b-button type="submit" variant="primary">Crear</b-button>
-                <b-button type="reset" variant="danger">Limpiar</b-button>
+                <b-button type="submit" variant="primary" style="margin: 0.5em">Crear</b-button>
+                <b-button type="reset" variant="danger" style="margin: 0.5em">Limpiar</b-button>
+                
+                <b-alert v-if="show" show style="margin: 0; font-size: 0.5em">
+                    {{message}}
+                </b-alert>                
         </b-form>
             </b-col>
         </b-row>
@@ -89,7 +93,9 @@ export default {
             h_days: "",
             h_price: 0,
             m_price: 0,
-            l_price: 0            
+            l_price: 0,
+            message:"",
+            show: false            
         }
     },
     methods:{
@@ -102,13 +108,16 @@ export default {
                 h_days: this.h_days
             }
             axios
-            .post("http://127.0.0.1:8000/hotel/create/",hotelIn)
+            .post("http://127.0.0.1:8000/hotel/create/",hotelIn,{ headers: {} })
             .then((response)=>{
-                alert("Hotel creado exitosamente");
+                this.message="Hotel creado exitosamente";
+                this.show=true;
                 // this.$router.push({ name:"Lista_hoteles"});
             })
             .catch((error)=>{
-                alert("Error en el servidor");
+                if (error.response.status == "400")
+                    this.message = "El hotel ya existe.";
+                    this.show=true;
             });
         }
     }
