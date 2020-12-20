@@ -177,7 +177,7 @@ export default {
         )
         .catch((error) => {
             if (error.response.status == "422")
-              this.message = "Por favor ingrese todos los datos";
+              this.message = "Por favor complete todos los datos";
               this.show=true;
             if (error.response.status == "400")
               if (this.expected_profit<this.incidental_value)

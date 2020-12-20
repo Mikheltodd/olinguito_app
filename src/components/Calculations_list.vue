@@ -33,11 +33,12 @@
           >
             <option v-for="i in hotels" v-bind:key="i.name">{{i.name}}</option>
           </select>
-          <br />
+          
           <button
             v-scroll-to="'#table'"
             class="btn btn-success"
             v-on:click="make_consult"
+            style="margin: 0.5em"
           >
             Buscar
           </button>
@@ -45,9 +46,13 @@
             v-scroll-to="'#table'"
             class="btn btn-success"
             v-on:click="refresh"
+            style="margin: 0.5em"
           >
             Refrescar
           </button>
+          <b-alert v-if="show" show variant="warning" style="margin: 0; font-size: 0.8em">
+            {{message}}
+          </b-alert>
         </div>
       </b-col>
     </b-row>
@@ -99,19 +104,23 @@ export default {
       hotel_name: "",
       calculations: [],
       hotels:[],
+      message:"",
+      show:false
     };
   },
   methods: {
     make_consult: function () {
       let self = this;
-
+      this.show=false;
       axios
         .get("http://127.0.0.1:8000/hotel/calculations/" + this.hotel_name)
         .then((response) => {
           self.calculations = response.data;
         })
         .catch((error) => {
-          alert("Error de servidor");
+          if (error.response.status == "404")
+            this.message = "Seleccione un hotel.";
+            this.show=true;
         });
     },
     refresh: function(){
