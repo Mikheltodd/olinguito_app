@@ -31,10 +31,10 @@
             v-model="hotel_name"
             required
           >
-            <option selected value="">Seleccione un hotel</option>
-            <option value="Hotel1">Hotel 1</option>
+            <option v-for="i in hotels" v-bind:key="i.name">{{i.name}}</option>
+            <!-- <option value="Hotel1">Hotel 1</option>
             <option value="Hotel2">Hotel 2</option>
-            <option value="olinguito">Olinguito</option>
+            <option value="olinguito">Olinguito</option> -->
           </select>
           <br />
           <button
@@ -44,6 +44,13 @@
           >
             Buscar
           </button>
+          <button
+            v-scroll-to="'#table'"
+            class="btn btn-success"
+            v-on:click="refresh"
+          >
+            Refrescar
+          </button>
         </div>
       </b-col>
     </b-row>
@@ -52,7 +59,10 @@
         <b-table-simple
           id="table"
           class="table table-bordered table-striped text-center"
-          hover
+          :sort-by.sync="sortBy"
+          :sort-desc.sync="sortDesc"
+          sort-icon-left
+          striped hover
           small
           caption-top
           responsive
@@ -109,6 +119,18 @@ export default {
           alert("Error de servidor");
         });
     },
+    refresh: function(){
+       let self = this;
+    axios
+      .get("http://127.0.0.1:8000/hotel/calculationsHotels")
+      .then((response) => {
+        self.calculations = response.data;
+      })
+      .catch((error) => {
+        alert("Error servidor");
+      });
+
+    }
   },
   created: function () {
     let self = this;
@@ -120,11 +142,7 @@ export default {
       .catch((error) => {
         alert("Error servidor");
       });
-  },
-
-   created: function () {
-    let self = this;
-    axios
+      axios
       .get("http://127.0.0.1:8000/hotel/list")
       .then((response) => {
         self.hotels = response.data;
@@ -134,5 +152,6 @@ export default {
         alert("Error de servidor");
       });
   },
+
 };
 </script>
