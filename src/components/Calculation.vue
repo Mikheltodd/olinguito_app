@@ -177,8 +177,8 @@ export default {
         )
         .catch((error) => {
             if (error.response.status == "422")
-            this.message = "Por favor ingrese todos los datos";
-            this.show=true;
+              this.message = "Por favor ingrese todos los datos";
+              this.show=true;
             if (error.response.status == "400")
               if (this.expected_profit<this.incidental_value)
                 this.message = "Porcentaje de utilidad no puede ser menor que el porcentaje de imprevistos";

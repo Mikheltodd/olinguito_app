@@ -32,9 +32,6 @@
             required
           >
             <option v-for="i in hotels" v-bind:key="i.name">{{i.name}}</option>
-            <!-- <option value="Hotel1">Hotel 1</option>
-            <option value="Hotel2">Hotel 2</option>
-            <option value="olinguito">Olinguito</option> -->
           </select>
           <br />
           <button
@@ -59,9 +56,6 @@
         <b-table-simple
           id="table"
           class="table table-bordered table-striped text-center"
-          :sort-by.sync="sortBy"
-          :sort-desc.sync="sortDesc"
-          sort-icon-left
           striped hover
           small
           caption-top
@@ -104,6 +98,7 @@ export default {
     return {
       hotel_name: "",
       calculations: [],
+      hotels:[],
     };
   },
   methods: {
