@@ -155,7 +155,7 @@ export default {
         incidental_value: this.incidental_value,
       };
       axios
-        .put("http://127.0.0.1:8000/hotel/calculation/", dataIn)
+        .put("https://olinguito.herokuapp.com/hotel/calculation/", dataIn)
         // .then(response =>{
         //   alert("El cálculo se realizó con éxito");
         // this.$router.push({ name:"calculation", params:{data}});
@@ -194,7 +194,7 @@ export default {
   created: function () {
     let self = this;
     axios
-      .get("http://127.0.0.1:8000/hotel/list")
+      .get("https://olinguito.herokuapp.com/hotel/list")
       .then((response) => {
         self.hotels = response.data;
         console.log(self.hotels);

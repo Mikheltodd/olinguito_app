@@ -74,7 +74,7 @@ export default {
   created: function () {
     let self = this;
     axios
-      .get("http://127.0.0.1:8000/hotel/list")
+      .get("https://olinguito.herokuapp.com/hotel/list")
       .then((response) => {
         self.hotels = response.data;
         console.log(self.hotels);

@@ -109,7 +109,7 @@ export default {
                 h_days: this.h_days
             }
             axios
-            .post("http://127.0.0.1:8000/hotel/create/",hotelIn,{ headers: {} })
+            .post("https://olinguito.herokuapp.com/hotel/create/",hotelIn,{ headers: {} })
             .then((response)=>{
                 this.message="Hotel creado exitosamente";
                 this.show=true;

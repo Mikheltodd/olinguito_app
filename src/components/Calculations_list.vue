@@ -113,7 +113,7 @@ export default {
       let self = this;
       this.show=false;
       axios
-        .get("http://127.0.0.1:8000/hotel/calculations/" + this.hotel_name)
+        .get("https://olinguito.herokuapp.com/hotel/calculations/" + this.hotel_name)
         .then((response) => {
           self.calculations = response.data;
         })
@@ -126,7 +126,7 @@ export default {
     refresh: function(){
        let self = this;
     axios
-      .get("http://127.0.0.1:8000/hotel/calculationsHotels")
+      .get("https://olinguito.herokuapp.com/hotel/calculationsHotels")
       .then((response) => {
         self.calculations = response.data;
       })
@@ -139,7 +139,7 @@ export default {
   created: function () {
     let self = this;
     axios
-      .get("http://127.0.0.1:8000/hotel/calculationsHotels")
+      .get("https://olinguito.herokuapp.com/hotel/calculationsHotels")
       .then((response) => {
         self.calculations = response.data;
       })
@@ -147,7 +147,7 @@ export default {
         alert("Error servidor");
       });
       axios
-      .get("http://127.0.0.1:8000/hotel/list")
+      .get("https://olinguito.herokuapp.com/hotel/list")
       .then((response) => {
         self.hotels = response.data;
         console.log(self.hotels);

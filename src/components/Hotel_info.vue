@@ -165,7 +165,7 @@ export default {
       this.show = false;
 
       axios
-        .get("http://127.0.0.1:8000/hotel/details/" + this.hotel_name)
+        .get("https://olinguito.herokuapp.com/hotel/details/" + this.hotel_name)
         .then((result) => {
           self.n_rooms = result.data.n_rooms;
           self.total_operation_cost = result.data.total_operation_cost;
@@ -187,7 +187,7 @@ export default {
   created: function () {
     let self = this;
     axios
-      .get("http://127.0.0.1:8000/hotel/list")
+      .get("https://olinguito.herokuapp.com/hotel/list")
       .then((response) => {
         self.hotels = response.data;
         console.log(self.hotels);
