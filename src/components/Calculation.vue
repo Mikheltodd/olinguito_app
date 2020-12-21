@@ -67,14 +67,14 @@
             required
           />
           <br />
-          <button
-            v-scroll-to="'#table_results'"
-            class="btn btn-success"
-            v-on:click="make_calculation"
+          <b-button
+            variant="outline-dark"
+            type="submit"
             style="margin: 0.5em"
+            v-scroll-to="'#table_results'"
+            v-on:click="make_calculation"
+            >Calcular</b-button
           >
-            Calcular
-          </button>
           <b-alert
             v-if="show"
             show
@@ -84,7 +84,6 @@
           >
         </div>
       </b-col>
-
       <b-col
         sm="auto"
         class="d-flex align-items-center justify-content-center"
@@ -144,8 +143,8 @@ export default {
       expected_profit: "",
       incidental_value: "",
       hotels: [],
-      message:"",
-      show:false
+      message: "",
+      show: false,
     };
   },
   methods: {
@@ -172,20 +171,22 @@ export default {
             (this.h_price = response.data.h_price),
             (this.m_price = response.data.m_price),
             (this.l_price = response.data.l_price),
-            this.show=false
+            (this.show = false)
           )
         )
         .catch((error) => {
-            if (error.response.status == "422")
-              this.message = "Por favor complete todos los datos";
-              this.show=true;
-            if (error.response.status == "400")
-              if (this.expected_profit<this.incidental_value)
-                this.message = "Porcentaje de utilidad no puede ser menor que el porcentaje de imprevistos";
-                this.show=true;
-              if (this.expected_profit<0 || this.incidental_value<0)
-                this.message = "Porcentaje de utilidad y/o Porcentaje de imprevistos no pueden ser negativos";
-                this.show=true;
+          if (error.response.status == "422")
+            this.message = "Por favor complete todos los datos";
+          this.show = true;
+          if (error.response.status == "400")
+            if (this.expected_profit < this.incidental_value)
+              this.message =
+                "Porcentaje de utilidad no puede ser menor que el porcentaje de imprevistos";
+          this.show = true;
+          if (this.expected_profit < 0 || this.incidental_value < 0)
+            this.message =
+              "Porcentaje de utilidad y/o Porcentaje de imprevistos no pueden ser negativos";
+          this.show = true;
           // alert("Error en el servidor");
         });
     },

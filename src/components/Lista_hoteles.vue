@@ -22,8 +22,8 @@
         </h3>
       </b-col>
     </b-row>
-    <b-row>
-      <b-col>
+    <b-row align-h="center">
+      <b-col sm="auto" style="text-align: center">
         <b-table-simple
           class="table table-bordered table-striped text-center"
           hover
@@ -43,8 +43,8 @@
             </b-tr>
             <b-tr class="text-center bg-info text-light">
               <b-th>Baja</b-th>
-              <b-th>Alta</b-th>
               <b-th>Media</b-th>
+              <b-th>Alta</b-th>
             </b-tr>
           </b-thead>
           <b-tbody>
