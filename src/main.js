@@ -27,6 +27,11 @@ Vue.filter("formatDate", function(value) {
     return moment(String(value)).format("MM/DD/YYYY"); //Da formato a fechas
   }
 });
+Vue.filter("formatHour", function(value) {
+  if (value) {
+    return moment(String(value)).format("MM/DD/YYYY hh:mm:ss"); //Da formato como fecha y hora
+  }
+});
 
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";

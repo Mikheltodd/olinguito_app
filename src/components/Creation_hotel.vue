@@ -48,6 +48,7 @@
                     <b-form-input
                         type="number"
                         v-model="total_operation_cost"
+                        title="El costo total de operación es el costo de operación de todas las habitaciones en el transcurso del año" 
                         placeholder="Costo operación total"
                         required
                     ></b-form-input>
